@@ -13,7 +13,7 @@
                     <a class="nav-link active" href="addFinancial.php">Step 2:&nbsp;Financial Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Step 3:&nbsp;Additional Information</a>
+                    <a class="nav-link" href="addInfo.php">Step 3:&nbsp;Additional Information</a>
                 </li>
             </ul>
         </div>
