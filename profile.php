@@ -5,30 +5,33 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <h3 class="text-center text-muted">User Profile</h3>
-            <div class="card">
-                <div class="card-body">
-                    <form action="" method="post">
-                        <div class="col-md-4">
-                            <img src="img/wc.png" class="img-fluid" width="100">
-                        </div><br>
-                        <div class="col-md-8">
-                            <label>Name:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" disabled>
+            <center>
+                <h3 class="text-center text-muted">User Profile</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <div class="col-md-4">
+                                <img src="img/wc.png" class="img-fluid" width="100">
+                            </div><br>
+                            <div class="col-md-8">
+                                <label>Name:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                                <label>Email:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                                <label>Password:</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" disabled>
+                                </div>
                             </div>
-                            <label>Email:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" disabled>
-                            </div>
-                            <label>Password:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" disabled>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </center>
+
         </div>
     </div>
 </div>
