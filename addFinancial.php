@@ -10,7 +10,7 @@
                     <a class="nav-link" data-toggle="tab" href="addLoan.php">Personal Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#financial">Financial Information</a>
+                    <a class="nav-link active" data-toggle="tab" href="addFinancial.php">Financial Information</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#">Additional Information</a>
@@ -21,7 +21,7 @@
         <div class="col-md-6 mx-auto" style="padding-top:3rem" id="financial">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center text-muted">Step 1:Personal Information</h3>
+                    <h3 class="text-center text-muted">Step 2:Financial Information</h3>
                     <hr>
                     <form action="" method="post">
                     <label>Image:</label>

@@ -10,7 +10,7 @@
                     <a class="nav-link active" data-toggle="tab" href="#person">Personal Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#financial">Financial Information</a>
+                    <a class="nav-link" data-toggle="tab" href="addFinancial.php">Financial Information</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#">Additional Information</a>
@@ -18,7 +18,7 @@
             </ul>
         </div>
 
-        <div class="col-md-6 mx-auto tab-content" style="padding-top:3rem" id="person">
+        <div class="col-md-6 mx-auto" style="padding-top:3rem" id="person">
             <div class="card">
                 <div class="card-body">
                     <h3 class="text-center text-muted">Step 1:Personal Information</h3>
