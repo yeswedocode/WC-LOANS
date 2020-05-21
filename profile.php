@@ -15,15 +15,15 @@
                         <div class="col-md-8">
                             <label>Name:</label>
                             <div class="form-group">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" disabled>
                             </div>
                             <label>Email:</label>
                             <div class="form-group">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" disabled>
                             </div>
                             <label>Password:</label>
                             <div class="form-group">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" disabled>
                             </div>
                         </div>
                     </form>
