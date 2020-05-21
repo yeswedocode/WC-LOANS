@@ -7,21 +7,21 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#person">Personal Information</a>
+                    <a class="nav-link active" href="#person">Step 1:&nbsp;Personal Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="addFinancial.php">Financial Information</a>
+                    <a class="nav-link" href="addFinancial.php">Step 2:&nbsp;Financial Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#">Additional Information</a>
+                    <a class="nav-link" href="#">Step 3:&nbsp;Additional Information</a>
                 </li>
             </ul>
         </div>
 
-        <div class="col-md-6 mx-auto" style="padding-top:3rem" id="person">
+        <div class="col-md-6 mx-auto" style="padding-top:3rem">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center text-muted">Step 1:Personal Information</h3>
+                    <h3 class="text-center text-muted">Personal Information</h3>
                     <hr>
                     <form action="" method="post">
                     <label>Image:</label>

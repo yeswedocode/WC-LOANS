@@ -7,58 +7,58 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="addLoan.php">Personal Information</a>
+                    <a class="nav-link" href="addLoan.php">Step 1:&nbsp;Personal Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="addFinancial.php">Financial Information</a>
+                    <a class="nav-link active" href="addFinancial.php">Step 2:&nbsp;Financial Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#">Additional Information</a>
+                    <a class="nav-link" href="#">Step 3:&nbsp;Additional Information</a>
                 </li>
             </ul>
         </div>
 
-        <div class="col-md-6 mx-auto" style="padding-top:3rem" id="financial">
+        <div class="col-md-6 mx-auto" style="padding-top:3rem">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center text-muted">Step 2:Financial Information</h3>
+                    <h3 class="text-center text-muted">Financial Information</h3>
                     <hr>
                     <form action="" method="post">
-                    <label>Image:</label>
-                    <div class="form-group">
-                        <input type="file" name="imgFile" class="form-control">
-                    </div>
-                    <label>Member ID:</label>
-                    <div class="form-group">
-                        <input type="text" name="id" class="form-control" placeholder="Enter Member ID">
-                    </div>
-                    <label>Full Name:</label>
-                    <div class="form-group">
-                        <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
-                    </div>
-                    <label>Phone:</label>
-                    <div class="form-group">
-                        <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number">
-                    </div>
-                    <label>Address 1:</label>
-                    <div class="form-group">
-                        <input type="text" name="address1" class="form-control" placeholder="Enter Address 1">
-                    </div>
-                    <label>Address 2:</label>
-                    <div class="form-group">
-                        <input type="text" name="address2" class="form-control" placeholder="Enter Address 2">
-                    </div>
-                    <label>Region:</label>
-                    <div class="form-group">
-                        <input type="text" name="region" class="form-control" placeholder="Enter Region">
-                    </div>
-                    <label>City:</label>
-                    <div class="form-group">
-                        <input type="text" name="city" class="form-control" placeholder="Enter City">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="addPersonalDetails" class="form-control btn btn-outline-info" value="Add Personal Info">
-                    </div>
+                        <label>Member ID:</label>
+                        <div class="form-group">
+                            <input type="text" name="id" class="form-control" placeholder="Enter Member ID">
+                        </div>
+                        <label>Full Name:</label>
+                        <div class="form-group">
+                            <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
+                        </div>
+                        <label>Number Of Dependants:</label>
+                        <div class="form-group">
+                            <input type="text" name="dependants" class="form-control" placeholder="Enter No. Of Dependants">
+                        </div>
+                        <label>Name Of Business:</label>
+                        <div class="form-group">
+                            <input type="text" name="business_name" class="form-control" placeholder="Enter Name Of Business">
+                        </div>
+                        <label>Years in Business:</label>
+                        <div class="form-group">
+                            <input type="text" name="years_in_business" class="form-control" placeholder="Enter Years in Business">
+                        </div>
+                        <label>Name Of Person Representative:</label>
+                        <div class="form-group">
+                            <input type="text" name="representative" class="form-control" placeholder="Enter Name Of Person Representative">
+                        </div>
+                        <label>Loan Amount:</label>
+                        <div class="form-group">
+                            <input type="text" name="loan_amount" class="form-control" placeholder="Enter Loan Amount">
+                        </div>
+                        <label>Description:</label>
+                        <div class="form-group">
+                            <textarea name="description" class="form-control" rows="5" placeholder="Write Your Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="addFinancialDetails" class="form-control btn btn-outline-info" value="Add Financial Info">
+                        </div>
                     </form>
                 </div>
             </div>
