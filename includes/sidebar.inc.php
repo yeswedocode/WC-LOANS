@@ -52,8 +52,8 @@
           <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Loans Info:</h6>
-                  <a class="collapse-item" href="login.html">New</a>
-                  <a class="collapse-item" href="register.html">List</a>
+                  <a class="collapse-item" href="addLoan.php">New</a>
+                  <a class="collapse-item" href="loan.php">List</a>
               </div>
           </div>
       </li>
