@@ -58,13 +58,13 @@
                 <div class="col-md-12">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link" href="addLoan.php">Step 1:&nbsp;Personal Information</a>
+                            <a class="nav-link text-info" href="addLoan.php">Step 1:&nbsp;Personal Information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="addFinancial.php">Step 2:&nbsp;Financial Information</a>
+                            <a class="nav-link active text-info" href="addFinancial.php">Step 2:&nbsp;Financial Information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="addInfo.php">Step 3:&nbsp;Additional Information</a>
+                            <a class="nav-link text-info" href="addInfo.php">Step 3:&nbsp;Additional Information</a>
                         </li>
                     </ul>
                 </div>

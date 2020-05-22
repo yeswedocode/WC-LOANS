@@ -54,27 +54,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mx-auto">
-                    <h3 class="text-center text-muted">Add New User</h3>
+                    <h3 class="text-center text-muted">Add Payment</h3>
                     <hr>
                     <form action="" method="post">
-                        <label>Name:</label>
+                        <label>Member ID:</label>
                         <div class="form-group">
-                            <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
+                            <input type="text" name="id" class="form-control" placeholder="Enter Member ID">
                         </div>
-                        <label>Email:</label>
+                        <label>Transaction ID:</label>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Enter e-mail">
+                            <input type="text" name="transaction_id" class="form-control" placeholder="Enter Transaction ID">
                         </div>
-                        <label>Password:</label>
+                        <label>Amount Paid:</label>
                         <div class="form-group">
-                            <input type="password" name="uid" class="form-control" placeholder="Enter Password">
+                            <input type="text" name="amount" class="form-control" placeholder="Enter Amount">
                         </div>
-                        <label>Repeat Password:</label>
+                        <label>Date Paid:</label>
                         <div class="form-group">
-                            <input type="password" name="uid" class="form-control" placeholder="Repeat Password">
+                            <input type="text" name="date_paid" class="form-control" placeholder="Date Paid">
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Add User">
+                            <input type="submit" name="addPayment" class="form-control btn btn-outline-info" value="Add Payment">
                         </div>
                     </form>
                 </div>
@@ -89,12 +89,7 @@
             </div>
         </div>
     </footer>
-    <!-- End of Footer -->
 
 </div>
-<!-- End of Content Wrapper -->
-
-
-
 
 <?php include 'includes/footer.inc.php' ?>

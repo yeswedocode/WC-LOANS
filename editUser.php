@@ -53,9 +53,6 @@
         </nav>
 
         <div class="container">
-            <center>
-                <a href="users.php" class="btn btn-outline-info">Back To Users</a>
-            </center>
             <div class="row">
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add New User</h3>

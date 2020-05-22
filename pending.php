@@ -51,35 +51,27 @@
             </ul>
 
         </nav>
+
+
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mx-auto">
-                    <h3 class="text-center text-muted">Add New User</h3>
-                    <hr>
-                    <form action="" method="post">
-                        <label>Name:</label>
-                        <div class="form-group">
-                            <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
+                <div class="col mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="text-center text-muted">LOAN REQUEST</h3>
+                            <hr>
+                            <div class="jumbotron">
+                                <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Request!</strong> No Pending Request.
+								</div>
+                            </div>
                         </div>
-                        <label>Email:</label>
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Enter e-mail">
-                        </div>
-                        <label>Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="uid" class="form-control" placeholder="Enter Password">
-                        </div>
-                        <label>Repeat Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="uid" class="form-control" placeholder="Repeat Password">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Add User">
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+
 
     </div>
     <footer class="sticky-footer bg-light">
@@ -89,12 +81,6 @@
             </div>
         </div>
     </footer>
-    <!-- End of Footer -->
-
 </div>
-<!-- End of Content Wrapper -->
-
-
-
 
 <?php include 'includes/footer.inc.php' ?>

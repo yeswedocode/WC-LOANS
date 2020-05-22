@@ -57,13 +57,13 @@
                 <div class="col-md-12">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link" href="addLoan.php">Step 1:&nbsp;Personal Information</a>
+                            <a class="nav-link text-info" href="addLoan.php">Step 1:&nbsp;Personal Information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="addFinancial.php">Step 2:&nbsp;Financial Information</a>
+                            <a class="nav-link text-info" href="addFinancial.php">Step 2:&nbsp;Financial Information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="addInfo.php">Step 3:&nbsp;Additional Information</a>
+                            <a class="nav-link active text-info" href="addInfo.php">Step 3:&nbsp;Additional Information</a>
                         </li>
                     </ul>
                 </div>
@@ -74,6 +74,14 @@
                             <h3 class="text-center text-muted">Additional Information</h3>
                             <hr>
                             <form action="" method="post">
+                                <label>Member ID:</label>
+                                <div class="form-group">
+                                    <input type="text" name="id" class="form-control" placeholder="Enter Member ID">
+                                </div>
+                                <label>Member File:</label>
+                                <div class="form-group">
+                                    <input type="file" name="memberFile" class="form-control">
+                                </div>
                                 <label>Approved By:</label>
                                 <div class="form-group">
                                     <input type="text" name="approved_name" class="form-control" placeholder="Enter Your Name">

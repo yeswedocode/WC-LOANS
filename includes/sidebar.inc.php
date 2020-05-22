@@ -1,4 +1,4 @@
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <div class="sidebar-brand-text mx-3">WC <sup>LOAN</sup></div>
       </a>
@@ -47,7 +47,7 @@
       <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
               <i class="fas fa-fw fa-folder"></i>
-              <span>loans</span>
+              <span>Loans</span>
           </a>
           <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
@@ -58,7 +58,7 @@
           </div>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="missedPayment.php">
               <i class="fas fa-fw fa-chart-area"></i>
               <span>Missed Payment</span></a>
       </li>
@@ -71,8 +71,8 @@
           <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Payment Info:</h6>
-                  <a class="collapse-item" href="login.html">New</a>
-                  <a class="collapse-item" href="register.html">List</a>
+                  <a class="collapse-item" href="addPayment.php">New</a>
+                  <a class="collapse-item" href="payment.php">List</a>
               </div>
           </div>
       </li>
