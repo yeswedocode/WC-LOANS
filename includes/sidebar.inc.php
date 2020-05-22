@@ -45,17 +45,9 @@
           LOAN DETAILS
       </div>
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-              <i class="fas fa-fw fa-folder"></i>
-              <span>Loans</span>
-          </a>
-          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                  <h6 class="collapse-header">Loans Info:</h6>
-                  <a class="collapse-item" href="addLoan.php">New</a>
-                  <a class="collapse-item" href="loan.php">List</a>
-              </div>
-          </div>
+          <a class="nav-link" href="loan.php">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Refunded Loan</span></a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="missedPayment.php">
