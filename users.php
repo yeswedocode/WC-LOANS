@@ -52,6 +52,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
+                    <a href="addUser.php" class="btn btn-outline-info float-right">Add New User</a>
+                    <br>
+                    <br>
                     <table class="table table-striped" id="dataTable">
                         <thead class="thead-dark">
                             <th>Name</th>
