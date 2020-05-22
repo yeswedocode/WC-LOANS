@@ -2,6 +2,8 @@
 
 <?php include 'includes/sidebar.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
 
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
@@ -56,10 +58,10 @@
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add New User</h3>
                     <hr>
-                    <form action="" method="post">
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                         <label>Name:</label>
                         <div class="form-group">
-                            <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
+                            <input type="text" name="name" class="form-control" placeholder="Enter Full Name">
                         </div>
                         <label>Email:</label>
                         <div class="form-group">
@@ -67,11 +69,11 @@
                         </div>
                         <label>Password:</label>
                         <div class="form-group">
-                            <input type="password" name="uid" class="form-control" placeholder="Enter Password">
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password">
                         </div>
                         <label>Repeat Password:</label>
                         <div class="form-group">
-                            <input type="password" name="uid" class="form-control" placeholder="Repeat Password">
+                            <input type="password" name="repeat_password" class="form-control" placeholder="Repeat Password">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Add User">
