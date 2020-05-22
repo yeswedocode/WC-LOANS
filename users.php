@@ -55,6 +55,18 @@
                     <a href="addUser.php" class="btn btn-outline-info float-right">Add New User</a>
                     <br>
                     <br>
+                    <?php
+                    if(@$_GET['msg'] == 'success') {
+
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Congratulation!</strong>User Added Successfully.
+				            </div>
+                            ';
+                    }
+                    ?>
                     <table class="table table-striped" id="dataTable">
                         <thead class="thead-dark">
                             <th>Name</th>
@@ -62,15 +74,28 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
+                            <?php
+                            $dbconn = mysqli_connect("localhost","root","","wc");
+                            $sql = "SELECT * FROM users";
+                            $res = mysqli_query($dbconn,$res);
+
+                            while($row=mysqli_fetch_assoc($res)) {
+
+                                $name = $row['name'];
+                                $email = $row['email'];
+                            ?>
+
                             <tr>
-                                <td>Admin</td>
-                                <td>Admin@admin.com</td>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $email; ?></td>
                                 <td>
                                     <a href="editUser.php"><span class="badge badge-pill badge-info">Edit</span></a>
                                     |
                                     <a href="#"><span class="badge badge-pill badge-danger">Delete</span></a>
                                 </td>
                             </tr>
+
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -1,9 +1,8 @@
 <?php include 'includes/header.inc.php'; ?>
 
-<?php include 'includes/sidebar.inc.php'; ?>
-
 <?php include 'heart/allinone.php'; ?>
 
+<?php include 'includes/sidebar.inc.php'; ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
@@ -57,23 +56,47 @@
             <div class="row">
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add New User</h3>
+                    <?php
+                    if(@$_GET['msg'] == 'UserExist') {
+
+                        echo
+                            '
+                            <div class="alert alert-warning alert-dismissible fade show text-warning text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>User Check!</strong> Email Exists.
+				            </div>
+                            ';
+                    }
+
+                    else if(@$_GET['msg'] == 'PasswordCheck')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Password Check!</strong> Password Unmatched.
+				            </div>
+                            ';
+                    }
+
+                    ?>
                     <hr>
                     <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                         <label>Name:</label>
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Enter Full Name">
+                            <input type="text" name="name" class="form-control" placeholder="Enter Full Name" required>
                         </div>
                         <label>Email:</label>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Enter e-mail">
+                            <input type="email" name="email" class="form-control" placeholder="Enter e-mail" required>
                         </div>
                         <label>Password:</label>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
                         </div>
                         <label>Repeat Password:</label>
                         <div class="form-group">
-                            <input type="password" name="repeat_password" class="form-control" placeholder="Repeat Password">
+                            <input type="password" name="repeat_password" class="form-control" placeholder="Repeat Password" required>
                         </div>
                         <div class="form-group">
                             <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Add User">
