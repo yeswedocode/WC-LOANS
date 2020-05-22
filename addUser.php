@@ -99,7 +99,7 @@
                             <input type="password" name="repeat_password" class="form-control" placeholder="Repeat Password" required>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Add User">
+                            <input type="submit" role="button" name="addUser" class="form-control btn btn-outline-info" value="Add User">
                         </div>
                     </form>
                 </div>

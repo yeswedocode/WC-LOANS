@@ -20,6 +20,8 @@
          </div>
      </div>
  </div>
+ <script src="sweetAlert/jquery-3.5.1.min.js"></script>
+ <script src="sweetAlert/sweetalert2.all.min.js"></script>
  <script>
      $(document).ready(function() {
          $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();

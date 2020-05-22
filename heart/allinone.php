@@ -30,12 +30,31 @@ if(isset($_POST['addUser']))
         {
             $hashed_pass = password_hash($pass1, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users(name,email,password) VALUES('$name','$email','$hashed_pass')";
-            $res = mysqli_query($dbconn,$res);
+            $res = mysqli_query($dbconn,$sql);
 
             header("Location: users.php?msg=success");
             exit();
         }
     }
+}
+
+
+//EDIT USER
+
+if(isset($_GET['id']))
+{
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM users WHERE id='$id'";
+    $res = mysqli_query($dbconn,$sql);
+
+    while($row = mysqli_fetch_array($res))
+    {
+        $id = $row['id'];
+        $name = $row['name'];
+        $email = $row['email'];
+        $password = $row['password'];
+    }
+
 }
 
 ?>

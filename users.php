@@ -1,5 +1,7 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
@@ -59,12 +61,17 @@
                     if(@$_GET['msg'] == 'success') {
 
                         echo
-                            '
-                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
-								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Congratulation!</strong>User Added Successfully.
-				            </div>
-                            ';
+                            "
+                            <script>
+                            swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: 'User Added successfully!',
+                            timer: 2000,
+                            button: false
+                            });
+                            </script>
+                            ";
                     }
                     ?>
                     <table class="table table-striped" id="dataTable">
@@ -77,10 +84,11 @@
                             <?php
                             $dbconn = mysqli_connect("localhost","root","","wc");
                             $sql = "SELECT * FROM users";
-                            $res = mysqli_query($dbconn,$res);
+                            $res = mysqli_query($dbconn,$sql);
 
                             while($row=mysqli_fetch_assoc($res)) {
 
+                                $id = $row['id'];
                                 $name = $row['name'];
                                 $email = $row['email'];
                             ?>
@@ -89,7 +97,7 @@
                                 <td><?php echo $name; ?></td>
                                 <td><?php echo $email; ?></td>
                                 <td>
-                                    <a href="editUser.php"><span class="badge badge-pill badge-info">Edit</span></a>
+                                    <a href="editUser.php?id=<?php echo $id ?>"><span class="badge badge-pill badge-info">Edit</span></a>
                                     |
                                     <a href="#"><span class="badge badge-pill badge-danger">Delete</span></a>
                                 </td>

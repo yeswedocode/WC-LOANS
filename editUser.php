@@ -1,5 +1,7 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 
@@ -57,21 +59,22 @@
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add New User</h3>
                     <hr>
-                    <form action="" method="post">
+                    <form action="<?php$_SERVER['PHP_SELF']; ?>" method="post">
+                        <input type="hidden" value="<?php echo $id; ?>">
                         <label>Name:</label>
                         <div class="form-group">
-                            <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
+                            <input type="text" name="uid" class="form-control" value="<?php echo $name; ?>">
                         </div>
                         <label>Email:</label>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Enter e-mail">
+                            <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
                         </div>
                         <label>Password:</label>
                         <div class="form-group">
-                            <input type="password" name="uid" class="form-control" disabled>
+                            <input type="password" name="uid" class="form-control" value="<?php echo $password; ?>" disabled>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Edit User">
+                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Update User">
                         </div>
                     </form>
                 </div>

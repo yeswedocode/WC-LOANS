@@ -57,7 +57,7 @@
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Edit Member</h3>
                     <hr>
-                    <form action="" method="post">
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                         <label>Member ID:</label>
                         <div class="form-group">
                             <input type="text" name="id" class="form-control">
