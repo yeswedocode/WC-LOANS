@@ -230,7 +230,7 @@ if(isset($_POST['addInfo']))
 
     if($memberRows == 0)
     {
-        header("Location: addLoan.php?msg=memberDoesnotExist");
+        header("Location: addInfo.php?msg=memberDoesnotExist");
         exit();
     }
 
@@ -242,7 +242,7 @@ if(isset($_POST['addInfo']))
 
         if($phoneRows == 0)
         {
-            header("Location: addLoan.php?msg=phoneNumberExist");
+            header("Location: addInfo.php?msg=phoneNumberExist");
             exit();
         }
 
@@ -254,16 +254,16 @@ if(isset($_POST['addInfo']))
 
             if($nameRows == 0)
             {
-                header("Location: addLoan.php?msg=nameDoesnotExist");
+                header("Location: addInfo.php?msg=nameDoesnotExist");
                 exit();
             }
 
             else
             {
-               $createMemberQuery = "INSERT INTO application_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$address',$status)";
+               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$address',$status)";
                $resultQuery = mysqli_query($dbconn,$createMemberQuery);
 
-               header("Location: addLoan.php?msg=doneWithPersonalInfo");
+               header("Location: addInfo.php?msg=doneWithPersonalInfo");
                exit();
             }
         }
