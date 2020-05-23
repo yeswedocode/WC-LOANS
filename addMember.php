@@ -1,5 +1,7 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 
@@ -57,7 +59,7 @@
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add New Member</h3>
                        <?php
-                            if(@$_GET['msg'] == 'MemberExist')
+                            if(@$_GET['msg'] == 'memberExist')
                             {
 
                                 echo
@@ -65,6 +67,17 @@
                                     <div class="alert alert-warning alert-dismissible fade show text-warning text-center my-3">
                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                                         <strong>Member!</strong> Member Id Exists.
+                                    </div>
+                                    ';
+                            }
+                            if(@$_GET['msg'] == 'phoneNumberExist')
+                            {
+
+                                echo
+                                    '
+                                    <div class="alert alert-warning alert-dismissible fade show text-warning text-center my-3">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Member!</strong> Phone Number Al ready Exists.
                                     </div>
                                     ';
                             }

@@ -107,10 +107,10 @@ if(isset($_GET['delete_id']))
 
 if(isset($_POST['addMember']))
 {
-    $memberId       = $_POST['id'];
-    $memberName     = $_POST['name'];
+    $memberId       = strtoupper($_POST['id']);
+    $memberName     = strtoupper($_POST['name']);
     $memberPhone    = $_POST['phone'];
-    $memberAddress  = $_POST['address'];
+    $memberAddress  = strtoupper($_POST['address']);
 
     $checkMemberSql = "SELECT * FROM member_tbl WHERE id='$memberId'";
     $resultQuery = mysqli_query($dbconn,$checkMemberSql);
@@ -122,13 +122,27 @@ if(isset($_POST['addMember']))
         exit();
     }
 
+
     else
     {
-        $insertMemberQuery = "INSERT INTO member_tbl(id,name,phone,address) VALUES('$memberId','$memberName','$memberPhone','$memberAddress')";
-        $resultQuery = mysqli_query($dbconn,$insertMemberQuery);
+         $checkPhoneSql = "SELECT * FROM member_tbl WHERE phone='$memberPhone'";
+         $resultQuery = mysqli_query($dbconn,$checkPhoneSql);
+         $phoneRows = mysqli_num_rows($resultQuery);
 
-        header("Location: member.php?msg=success");
-        exit();
+        if($phoneRows > 0)
+        {
+
+            header("Location: addMember.php?msg=phoneNumberExist");
+            exit();
+        }
+        else
+        {
+             $insertMemberQuery = "INSERT INTO member_tbl(id,name,phone,address) VALUES('$memberId','$memberName','$memberPhone','$memberAddress')";
+             $resultQuery = mysqli_query($dbconn,$insertMemberQuery);
+
+             header("Location: member.php?msg=success");
+             exit();
+        }
 
     }
 
@@ -175,13 +189,13 @@ if(isset($_POST['updateMember']))
 
 //DELETE MEMBER DATA
 
-if(isset($_GET['member_delete']))
+if(isset($_GET['delete_member']))
 {
-    $memberId = $_GET['member_delete'];
+    $memberId = $_GET['delete_member'];
     $deleteMemberQuery = "DELETE FROM member_tbl WHERE id='$memberId'";
     $resultQuery = mysqli_query($dbconn,$deleteMemberQuery);
 
-    header('Location: member.php?deleteMember');
+    header("Location: ../member.php?msg=deleteMember");
     exit();
 }
 

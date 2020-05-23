@@ -1,5 +1,7 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 
@@ -117,10 +119,10 @@
                                 $memberAddress = $row['address'];
                             ?>
                               <tr>
-                                <td><?php echo $id; ?></td>
-                                <td><?php echo $name; ?></td>
-                                <td><?php echo $phone; ?></td>
-                                <td><?php echo $address; ?></td>
+                                <td><?php echo $memberId; ?></td>
+                                <td><?php echo $memberName; ?></td>
+                                <td><?php echo $memberPhone; ?></td>
+                                <td><?php echo $memberAddress; ?></td>
                                 <td>
                                     <a href="editMember.php?member_id=<?php echo $memberId; ?>"><span class="badge badge-pill badge-info">Edit</span></a>
                                     |
