@@ -58,24 +58,76 @@
                     <a href="addMember.php" class="btn btn-outline-info float-right">Add New Memmber</a>
                     <br>
                     <br>
+                       <?php
+                    if(@$_GET['msg'] == 'success')
+                    {
+
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Member!</strong> Member Added successfully.
+				            </div>
+                            ';
+                    }
+
+                    else if(@$_GET['msg'] == 'updateMember')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Member!</strong> Member Updated successfully.
+				            </div>
+                            ';
+                    }
+                    else if(@$_GET['msg'] == 'deleteMember')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Member!</strong> Member Delete successfully.
+				            </div>
+                            ';
+                    }
+
+
+                    ?>
+
                     <table class="table table-striped" id="dataTable">
                         <thead class="thead-dark">
                             <th>Member ID</th>
                             <th>Name</th>
                             <th>Phone</th>
+                            <th>Address</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>MEM 100</td>
-                                <td>John Doe</td>
-                                <td>0768693933</td>
+                            <?php
+                            $dbconn = mysqli_connect("localhost","root","","wc");
+                            $selectMemberQuery = "SELECT * FROM member_tbl";
+                            $resultQuery = mysqli_query($dbconn,$selectMemberQuery);
+
+                            while($row = mysqli_fetch_array($resultQuery))
+                            {
+                                $memberId = $row['id'];
+                                $memberName = $row['name'];
+                                $memberPhone = $row['phone'];
+                                $memberAddress = $row['address'];
+                            ?>
+                              <tr>
+                                <td><?php echo $id; ?></td>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $phone; ?></td>
+                                <td><?php echo $address; ?></td>
                                 <td>
-                                    <a href="editMember.php"><span class="badge badge-pill badge-info">Edit</span></a>
+                                    <a href="editMember.php?member_id=<?php echo $memberId; ?>"><span class="badge badge-pill badge-info">Edit</span></a>
                                     |
-                                    <a href="editMember.php"><span class="badge badge-pill badge-danger">Delete</span></a>
+                                    <a href="heart/allinone.php?delete_member=<?php echo $memberId; ?>"><span class="badge badge-pill badge-danger">Delete</span></a>
                                 </td>
                             </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -2,6 +2,10 @@
 
 include "db.php";
 
+///////////////////////////////// USER SCRIPTS //////////////////////////////////////////
+
+//INSERT USER
+
 if(isset($_POST['addUser']))
 {
     $name = $_POST['name'];
@@ -39,7 +43,7 @@ if(isset($_POST['addUser']))
 }
 
 
-//EDIT USER
+//READ USER DATA
 
 if(isset($_GET['id']))
 {
@@ -49,12 +53,138 @@ if(isset($_GET['id']))
 
     while($row = mysqli_fetch_array($res))
     {
-        $id = $row['id'];
-        $name = $row['name'];
-        $email = $row['email'];
-        $password = $row['password'];
+        $id         = $row['id'];
+        $name       = $row['name'];
+        $email      = $row['email'];
+        $password   = $row['password'];
     }
 
 }
+
+//UPDATE USER DATA
+
+if(isset($_POST['updateUser']))
+{
+    $id         = $_POST['id'];
+    $name       = $_POST['name'];
+    $email      = $_POST['email'];
+    $password   = $_POST['password'];
+
+    $updateUserQuery = "UPDATE users SET name='$name',email='$email',password='$password' WHERE id='$id'";
+    $resultQuery = mysqli_query($dbconn,$updateUserQuery);
+
+    header("Location: users.php?msg=updateUser");
+    exit();
+}
+
+//DELETE USER DATA
+
+if(isset($_GET['delete_id']))
+{
+    $id = $_GET['delete_id'];
+    $userDeleteQuery = "DELETE FROM users WHERE id='$id'";
+    $resultQuery = mysqli_query($dbconn,$userDeleteQuery);
+
+    header("Location: ../users.php?msg=deleteUser");
+    exit();
+}
+
+
+//////////////////////////////////// END OF USER SCRIPT ///////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+/////////////////////////////////// MEMBER SCRIPTS  ///////////////////////////////////////////////////////////////
+
+
+
+//CREATE MEMBER
+
+if(isset($_POST['addMember']))
+{
+    $memberId       = $_POST['id'];
+    $memberName     = $_POST['name'];
+    $memberPhone    = $_POST['phone'];
+    $memberAddress  = $_POST['address'];
+
+    $checkMemberSql = "SELECT * FROM member_tbl WHERE id='$memberId'";
+    $resultQuery = mysqli_query($dbconn,$checkMemberSql);
+    $memberRows = mysqli_num_rows($resultQuery);
+
+    if($memberRows > 0)
+    {
+        header("Location: addMember.php?msg=memberExist");
+        exit();
+    }
+
+    else
+    {
+        $insertMemberQuery = "INSERT INTO member_tbl(id,name,phone,address) VALUES('$memberId','$memberName','$memberPhone','$memberAddress')";
+        $resultQuery = mysqli_query($dbconn,$insertMemberQuery);
+
+        header("Location: member.php?msg=success");
+        exit();
+
+    }
+
+}
+
+
+//READ MEMBER DATA
+
+if(isset($_GET['member_id']))
+{
+    $id = $_GET['member_id'];
+    $selectMemberQuery = "SELECT * FROM member_tbl WHERE id='$id'";
+    $resultQuery = mysqli_query($dbconn,$selectMemberQuery);
+
+    while($row=mysqli_fetch_array($resultQuery))
+    {
+        $memberId       = $row['id'];
+        $memberName     = $row['name'];
+        $memberPhone    = $row['phone'];
+        $memberAddress  = $row['address'];
+
+    }
+
+}
+
+
+//UPDATE MEMBER DATA
+
+if(isset($_POST['updateMember']))
+{
+
+    $memberId       = $_POST['id'];
+    $memberName     = $_POST['name'];
+    $memberPhone    = $_POST['phone'];
+    $memberAddress  = $_POST['address'];
+
+    $updateMemberQuery = "UPDATE member_tbl SET name='$memberName,phone='$memberPhone',address='$memberAddress' WHERE id='$memberId'";
+    $resultQuery = mysqli_query($dbconn,$updateMemberQuery);
+
+    header("Location: member.php?msg=updateMember");
+    exit();
+}
+
+
+//DELETE MEMBER DATA
+
+if(isset($_GET['member_delete']))
+{
+    $memberId = $_GET['member_delete'];
+    $deleteMemberQuery = "DELETE FROM member_tbl WHERE id='$memberId'";
+    $resultQuery = mysqli_query($dbconn,$deleteMemberQuery);
+
+    header('Location: member.php?deleteMember');
+    exit();
+}
+
+/////////////////////////////////// END OF MEMBER SCRIPTS  ////////////////////////////////////////////////////////
 
 ?>

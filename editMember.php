@@ -60,22 +60,22 @@
                     <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                         <label>Member ID:</label>
                         <div class="form-group">
-                            <input type="text" name="id" class="form-control">
+                            <input type="text" name="id" class="form-control" value="<?php echo $memberId; ?>">
                         </div>
                         <label>Name:</label>
                         <div class="form-group">
-                            <input type="text" name="uid" class="form-control">
+                            <input type="text" name="name" class="form-control" value="<?php echo $memberName; ?>">
                         </div>
                         <label>Phone:</label>
                         <div class="form-group">
-                            <input type="text" name="phone" class="form-control">
+                            <input type="text" name="phone" class="form-control" value="<?php echo $memberPhone; ?>">
                         </div>
                         <label>Address:</label>
                         <div class="form-group">
-                            <textarea class="form-control" rows="4" name="address"></textarea>
+                            <textarea class="form-control" rows="4" name="address"><?php echo $memberAddress; ?></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="editMember" class="form-control btn btn-outline-info" value="Edit Member">
+                            <input type="submit" name="updateMember" class="form-control btn btn-outline-info" value="Update Member">
                         </div>
                     </form>
                 </div>

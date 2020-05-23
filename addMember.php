@@ -56,15 +56,30 @@
             <div class="row">
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add New Member</h3>
+                       <?php
+                            if(@$_GET['msg'] == 'MemberExist')
+                            {
+
+                                echo
+                                    '
+                                    <div class="alert alert-warning alert-dismissible fade show text-warning text-center my-3">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Member!</strong> Member Id Exists.
+                                    </div>
+                                    ';
+                            }
+
+
+                        ?>
                     <hr>
-                    <form action="" method="post">
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                         <label>Member ID:</label>
                         <div class="form-group">
                             <input type="text" name="id" class="form-control" placeholder="Enter Member ID">
                         </div>
                         <label>Name:</label>
                         <div class="form-group">
-                            <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
+                            <input type="text" name="name" class="form-control" placeholder="Enter Full Name">
                         </div>
                         <label>Phone:</label>
                         <div class="form-group">
@@ -75,7 +90,7 @@
                             <textarea class="form-control" rows="4" name="address" placeholder="Enter Your Full Address"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Add Member">
+                            <input type="submit" name="addMember" class="form-control btn btn-outline-info" value="Add Member">
                         </div>
                     </form>
                 </div>

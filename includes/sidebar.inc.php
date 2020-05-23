@@ -21,8 +21,8 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Users Info:</h6>
-                  <a class="collapse-item" href="addUser.php">New</a>
-                  <a class="collapse-item" href="users.php">List</a>
+                  <a class="collapse-item" href="addUser.php">Add User</a>
+                  <a class="collapse-item" href="users.php">View User</a>
               </div>
           </div>
       </li>
@@ -35,8 +35,8 @@
           <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Member Info:</h6>
-                  <a class="collapse-item" href="addMember.php">New</a>
-                  <a class="collapse-item" href="member.php">List</a>
+                  <a class="collapse-item" href="addMember.php">Add Member</a>
+                  <a class="collapse-item" href="member.php">View Member</a>
               </div>
           </div>
       </li>
@@ -63,8 +63,8 @@
           <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Payment Info:</h6>
-                  <a class="collapse-item" href="addPayment.php">New</a>
-                  <a class="collapse-item" href="payment.php">List</a>
+                  <a class="collapse-item" href="addPayment.php">Add Payment</a>
+                  <a class="collapse-item" href="payment.php">View Payment</a>
               </div>
           </div>
       </li>

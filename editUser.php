@@ -59,11 +59,11 @@
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add New User</h3>
                     <hr>
-                    <form action="<?php$_SERVER['PHP_SELF']; ?>" method="post">
-                        <input type="hidden" value="<?php echo $id; ?>">
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <label>Name:</label>
                         <div class="form-group">
-                            <input type="text" name="uid" class="form-control" value="<?php echo $name; ?>">
+                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
                         </div>
                         <label>Email:</label>
                         <div class="form-group">
@@ -71,10 +71,10 @@
                         </div>
                         <label>Password:</label>
                         <div class="form-group">
-                            <input type="password" name="uid" class="form-control" value="<?php echo $password; ?>" disabled>
+                            <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" disabled>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Update User">
+                            <input type="submit" name="updateUser" class="form-control btn btn-outline-info" value="Update User">
                         </div>
                     </form>
                 </div>

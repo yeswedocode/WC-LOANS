@@ -58,21 +58,40 @@
                     <br>
                     <br>
                     <?php
-                    if(@$_GET['msg'] == 'success') {
+                    if(@$_GET['msg'] == 'success')
+                    {
 
                         echo
-                            "
-                            <script>
-                            swal.fire({
-                            icon: 'success',
-                            title: 'Success!',
-                            text: 'User Added successfully!',
-                            timer: 2000,
-                            button: false
-                            });
-                            </script>
-                            ";
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Successfully!</strong> User Added successfully.
+				            </div>
+                            ';
                     }
+
+                    else if(@$_GET['msg'] == 'updateUser')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Update User!</strong> User Updated successfully.
+				            </div>
+                            ';
+                    }
+                    else if(@$_GET['msg'] == 'deleteUser')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Delete User!</strong> User Delete successfully.
+				            </div>
+                            ';
+                    }
+
+
                     ?>
                     <table class="table table-striped" id="dataTable">
                         <thead class="thead-dark">
@@ -99,7 +118,7 @@
                                 <td>
                                     <a href="editUser.php?id=<?php echo $id ?>"><span class="badge badge-pill badge-info">Edit</span></a>
                                     |
-                                    <a href="#"><span class="badge badge-pill badge-danger">Delete</span></a>
+                                    <a href="heart/allinone.php?delete_id=<?php echo $id ?>"><span class="badge badge-pill badge-danger">Delete</span></a>
                                 </td>
                             </tr>
 
