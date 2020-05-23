@@ -229,7 +229,7 @@ if(isset($_POST['addPersonalDetails']))
 
     else
     {
-        $checkPhoneNumberExist = "SELECT id FROM member_tbl WHERE phone='$phone'";
+        $checkPhoneNumberExist = "SELECT * FROM member_tbl WHERE phone='$phone'";
         $resultQuery = mysqli_query($dbconn,$checkPhoneNumberExist);
         $phoneRows = mysqli_num_rows($resultQuery);
 
@@ -241,7 +241,7 @@ if(isset($_POST['addPersonalDetails']))
 
         else
         {
-             $checkNameExist = "SELECT id FROM member_tbl WHERE name='$name'";
+             $checkNameExist = "SELECT * FROM member_tbl WHERE name='$name'";
              $resultQuery = mysqli_query($dbconn,$checkNameExist);
              $nameRows = mysqli_num_rows($resultQuery);
 
