@@ -1,5 +1,7 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -30,23 +32,65 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="text-center text-muted">Personal Information</h3>
+                                      <?php
+                    if(@$_GET['msg'] == 'doneWithPersonalInfo')
+                    {
+
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>From Step 1!</strong> Congratulations you have completed the first step.
+				            </div>
+                            ';
+                    }
+
+                    else if(@$_GET['msg'] == 'memberDoesnotExist')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Step 1!</strong> Sorry Member Does not Exists.
+				            </div>
+                            ';
+                    }
+                    else if(@$_GET['msg'] == 'phoneNumberExist')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Step 1!</strong> Enter the registered phone number.
+				            </div>
+                            ';
+                    }
+                    else if(@$_GET['msg'] == 'nameDoesnotExist')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Step 1!</strong> Enter the registered name.
+				            </div>
+                            ';
+                    }
+
+
+                    ?>
                             <hr>
-                            <form action="" method="post">
-                                <label>Image:</label>
-                                <div class="form-group">
-                                    <input type="file" name="imgFile" class="form-control">
-                                </div>
+                            <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                                 <label>Member ID:</label>
                                 <div class="form-group">
                                     <input type="text" name="id" class="form-control" placeholder="Enter Member ID">
                                 </div>
                                 <label>Full Name:</label>
                                 <div class="form-group">
-                                    <input type="text" name="uid" class="form-control" placeholder="Enter Full Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Full Name">
                                 </div>
                                 <label>Phone:</label>
                                 <div class="form-group">
-                                    <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number">
+                                    <input type="number" name="phone" class="form-control" min="10" max="10" placeholder="Enter Phone Number">
                                 </div>
                                 <label>Address 1:</label>
                                 <div class="form-group">

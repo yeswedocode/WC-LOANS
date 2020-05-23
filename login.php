@@ -15,7 +15,7 @@
                 <div class="col-md-3 mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            <a href="addInfo.php" class="fa-2x"><span class="badge badge-pill badge-info">Apply for Loan</span></a>
+                            <a href="addLoan.php" class="fa-2x"><span class="badge badge-pill badge-info">Apply for Loan</span></a>
                             <a href="loanStatus.php" class="fa-2x"><span class="badge badge-pill badge-success">Loan Status</span></a>
                             <a href="#" class="fa-2x"><span class="badge badge-pill badge-warning">FAQ</span></a>
                         </div>
@@ -29,7 +29,7 @@
                             <h3 class="text-center text-muted">SIGN IN TO YOUR ACCOUNT</h3>
                             <hr>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col">
                                     <form action="" method="post">
                                         <label>Username:</label>
                                         <div class="form-group">

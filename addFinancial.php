@@ -13,6 +13,42 @@
         <div class="container" style="padding-top:2rem">
             <div class="row">
                 <div class="col-md-12">
+                         <?php
+                    if(@$_GET['msg'] == '')
+                    {
+
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>From Step 1!</strong> Congratulations you have completed the first step.
+				            </div>
+                            ';
+                    }
+
+                    else if(@$_GET['msg'] == 'updateUser')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Update User!</strong> User Updated successfully.
+				            </div>
+                            ';
+                    }
+                    else if(@$_GET['msg'] == 'deleteUser')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Delete User!</strong> User Delete successfully.
+				            </div>
+                            ';
+                    }
+
+
+                    ?>
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link text-info" href="addLoan.php">Step 1:&nbsp;Personal Information</a>

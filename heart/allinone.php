@@ -201,4 +201,71 @@ if(isset($_GET['delete_member']))
 
 /////////////////////////////////// END OF MEMBER SCRIPTS  ////////////////////////////////////////////////////////
 
+
+
+
+
+//////////////////////////////////// PERSONAL INFORMATION DETAILS  ///////////////////////////////////////////////////
+
+if(isset($_POST['addPersonalDetails']))
+{
+    $id         = $_POST['id'];
+    $name       = $_POST['name'];
+    $phone      = $_POST['phone'];
+    $address1   = $_POST['address1'];
+    $address2   = $_POST['address2'];
+    $region     = $_POST['region'];
+    $city       = $_POST['city'];
+
+    $checkMemberExist = "SELECT * FROM member_tbl WHERE id='$id'";
+    $resultQuery = mysqli_query($dbconn,$checkMemberExist);
+    $memberRows = mysqli_num_rows($resultQuery);
+
+    if($memberRows == 0)
+    {
+        header("Location: addLoan.php?msg=memberDoesnotExist");
+        exit();
+    }
+
+    else
+    {
+        $checkPhoneNumberExist = "SELECT id FROM member_tbl WHERE phone='$phone'";
+        $resultQuery = mysqli_query($dbconn,$checkPhoneNumberExist);
+        $phoneRows = mysqli_num_rows($resultQuery);
+
+        if($phoneRows == 0)
+        {
+            header("Location: addLoan.php?msg=phoneNumberExist");
+            exit();
+        }
+
+        else
+        {
+             $checkNameExist = "SELECT id FROM member_tbl WHERE name='$name'";
+             $resultQuery = mysqli_query($dbconn,$checkNameExist);
+             $nameRows = mysqli_num_rows($resultQuery);
+
+            if($nameRows == 0)
+            {
+                header("Location: addLoan.php?msg=nameDoesnotExist");
+                exit();
+            }
+
+            else
+            {
+               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,address1,address2,region,city) VALUES('$id','$name','$phone','$address1','$address2','$region','$city')";
+               $resultQuery = mysqli_query($dbconn,$createMemberQuery);
+
+               header("Location: addLoan.php?msg=doneWithPersonalInfo");
+               exit();
+            }
+        }
+
+    }
+}
+
+/////////////////////// END OF PERSONAL INFORMATION SCRIPTS  ///////////////////////////////////////
+
+
+
 ?>
