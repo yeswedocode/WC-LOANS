@@ -207,7 +207,7 @@ if(isset($_GET['delete_member']))
 
 //////////////////////////////////// APPLICATION INFORMATION DETAILS  ///////////////////////////////////////////////////
 
-if(isset($_POST['addPersonalDetails']))
+if(isset($_POST['addInfo']))
 {
     $id         = $_POST['id'];
     $name       = $_POST['name'];

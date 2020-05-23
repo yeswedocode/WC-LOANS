@@ -63,9 +63,7 @@
         <div class="container" style="padding-top:2rem">
             <div class="row">
                 <div class="col">
-                    <form action="" method="post" id="regForm">
-                        <h1 class="text-center">APPLICATION FORM</h1>
-                        <?php
+                               <?php
                     if(@$_GET['msg'] == 'doneWithPersonalInfo')
                     {
 
@@ -111,6 +109,8 @@
 
 
                     ?>
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" id="regForm">
+                        <h1 class="text-center">APPLICATION FORM</h1>
                         <hr>
                         <div class="tab">
                             <h6>STEP 1: PERSONAL INFORMATION</h6>
@@ -162,7 +162,7 @@
                                 <label>Name of Business:</label>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><input type="text" name="id" class="form-control" oninput="this.className = ''" placeholder="Enter Business Name" required></p>
+                                        <p><input type="text" name="business_name" class="form-control" oninput="this.className = ''" placeholder="Enter Business Name" required></p>
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                                 <label>Guarantor Relation:</label>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><input type="text" name="relation" class="form-control" oninput="this.className = ''" placeholder="Enter Guarantor Relation" required></p>
+                                        <p><input type="text" name="grelation" class="form-control" oninput="this.className = ''" placeholder="Enter Guarantor Relation" required></p>
                                     </div>
                                 </div>
                             </div>
