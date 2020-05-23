@@ -205,17 +205,24 @@ if(isset($_GET['delete_member']))
 
 
 
-//////////////////////////////////// PERSONAL INFORMATION DETAILS  ///////////////////////////////////////////////////
+//////////////////////////////////// APPLICATION INFORMATION DETAILS  ///////////////////////////////////////////////////
 
 if(isset($_POST['addPersonalDetails']))
 {
     $id         = $_POST['id'];
     $name       = $_POST['name'];
     $phone      = $_POST['phone'];
-    $address1   = $_POST['address1'];
-    $address2   = $_POST['address2'];
     $region     = $_POST['region'];
     $city       = $_POST['city'];
+    $business_name = $_POST['business_name'];
+    $dependant   = $_POST['dependant'];
+    $loan_amount = $_POST['loan_amount'];
+    $description = $_POST['description'];
+    $gname = $_POST['gname'];
+    $grelation = $_POST['grelation'];
+    $gphone = $_POST['gphone'];
+    $gaddress = $_POST['gaddress'];
+    $status = "pending";
 
     $checkMemberExist = "SELECT * FROM member_tbl WHERE id='$id'";
     $resultQuery = mysqli_query($dbconn,$checkMemberExist);
@@ -253,7 +260,7 @@ if(isset($_POST['addPersonalDetails']))
 
             else
             {
-               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,address1,address2,region,city) VALUES('$id','$name','$phone','$address1','$address2','$region','$city')";
+               $createMemberQuery = "INSERT INTO application_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$address',$status)";
                $resultQuery = mysqli_query($dbconn,$createMemberQuery);
 
                header("Location: addLoan.php?msg=doneWithPersonalInfo");
