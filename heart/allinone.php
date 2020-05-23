@@ -260,7 +260,7 @@ if(isset($_POST['addInfo']))
 
             else
             {
-               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$address',$status)";
+               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$gaddress',$status)";
                $resultQuery = mysqli_query($dbconn,$createMemberQuery);
 
                header("Location: addInfo.php?msg=doneWithPersonalInfo");
