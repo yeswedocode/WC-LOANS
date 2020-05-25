@@ -56,7 +56,7 @@
                                     else
                                     {
 
-                                    $selectSearchQuery = "SELECT * FROM member_tbl WHERE id='$code'";
+                                    $selectSearchQuery = "SELECT * FROM personal_info_tbl WHERE id='$code' AND status='active'";
                                     $resultQuery = mysqli_query($dbconn,$selectSearchQuery);
                                     $searchRows = mysqli_num_rows($resultQuery);
 
@@ -89,7 +89,7 @@
                                     {
                                         echo
                                             '
-                                             <div class="alert alert-danger alert-dismissible fade show text-info text-center my-3">
+                                             <div class="alert alert-warning alert-dismissible fade show text-info text-center my-3">
 								             <button type="button" class="close" data-dismiss="alert">&times;</button>
 								             <strong>Status Check!</strong> Not Yet Activated.
 				                             </div>

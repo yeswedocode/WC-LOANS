@@ -260,7 +260,8 @@ if(isset($_POST['addInfo']))
 
             else
             {
-               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$gaddress',$status)";
+               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$gaddress','$status')";
+
                $resultQuery = mysqli_query($dbconn,$createMemberQuery);
 
                header("Location: addInfo.php?msg=doneWithPersonalInfo");
@@ -272,6 +273,60 @@ if(isset($_POST['addInfo']))
 }
 
 /////////////////////// END OF PERSONAL INFORMATION SCRIPTS  ///////////////////////////////////////
+
+
+
+
+
+//////////////////////        CHANGE PASSWORD FOR USER       /////////////////////////////////////////////
+
+if(isset($_POST['changePassword']))
+{
+    $currentPassword = $_POST['currentPassword'];
+    $newPassword = $_POST['newPassword'];
+    $repeatPassword = $_POST['repeatPassword'];
+
+    $selectPassword = "SELECT * FROM users";
+    $resultQuery = mysqli_query($dbconn,$selectPassword);
+
+    while($row=mysqli_fetch_array($resultQuery))
+    {
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+    }
+
+    if($currentPassword != $password)
+    {
+        header("Location: editUser.php?msg=currentPassword");
+        exit();
+    }
+    else if($newPassword != $repeatPassword)
+    {
+         header("Location: editUser.php?msg=passwordMatch");
+         exit();
+    }
+    else if($newPassword == $repeatPassword && $newPassword == $currentPassword)
+    {
+         header("Location: editUser.php?msg=newPasswordExist");
+         exit();
+    }
+             else if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $newPassword))
+             {
+                 header("Location: editUser.php?msg=passwordRequirement");
+                 exit();
+             }
+
+             else
+             {
+                 $hashPassword = password_hash($newPassword,PASSWORD_DEFAULT);
+                 $updatePasswordQuery = "UPDATE users SET password = $hashPassword";
+                 $resultQuery = mysqli_query($dbconn,$updatePasswordQuery);
+
+                 header("Location: users.php?msg=passwordSuccess");
+                 exit();
+             }
+
+}
 
 
 

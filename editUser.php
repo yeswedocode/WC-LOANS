@@ -81,21 +81,21 @@
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Change Password</h3>
                     <hr>
-                    <form action="" method="post">
+                    <form action="<?php $_sERVER['PHP_SELF']; ?>" method="post">
                         <label>Current Password:</label>
                         <div class="form-group">
-                            <input type="password" name="current_pass" class="form-control" placeholder="Enter Current Password">
+                            <input type="password" name="currentPassword" class="form-control" placeholder="Enter Current Password">
                         </div>
                         <label>New Password:</label>
                         <div class="form-group">
-                            <input type="password" name="new_password" class="form-control" placeholder="Enter New Password">
+                            <input type="password" name="newPassword" class="form-control" placeholder="Enter New Password">
                         </div>
                         <label>Repeat Password:</label>
                         <div class="form-group">
-                            <input type="password" name="repeat_password" class="form-control" placeholder="Repeat Password">
+                            <input type="password" name="repeatPassword" class="form-control" placeholder="Repeat Password">
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="addUser" class="form-control btn btn-outline-info" value="Change password">
+                            <input type="submit" name="changePassword" class="form-control btn btn-outline-info" value="Change password">
                         </div>
                     </form>
                 </div>

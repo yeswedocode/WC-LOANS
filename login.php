@@ -15,7 +15,7 @@
                 <div class="col-md-3 mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            <a href="addLoan.php" class="fa-2x"><span class="badge badge-pill badge-info">Apply for Loan</span></a>
+                            <a href="addInfo.php" class="fa-2x"><span class="badge badge-pill badge-info">Apply for Loan</span></a>
                             <a href="loanStatus.php" class="fa-2x"><span class="badge badge-pill badge-success">Loan Status</span></a>
                             <a href="#" class="fa-2x"><span class="badge badge-pill badge-warning">FAQ</span></a>
                         </div>

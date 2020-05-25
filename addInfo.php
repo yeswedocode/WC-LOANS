@@ -15,7 +15,7 @@
         <div class="container" style="padding-top:2rem">
             <div class="row">
                 <div class="col">
-                     <?php
+                    <?php
                     if(@$_GET['msg'] == 'doneWithPersonalInfo')
                     {
 
@@ -63,6 +63,32 @@
 
 
                     ?>
+                    <h3 class="text-center text-muted">APPLICATION FORM</h3>
+                     <table class="table table-striped" id="dataTable">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+            </thead>
+            <tbody>
+                <?php
+                    $sql = "SELECT * FROM personal_info_tbl";
+                    $query = mysqli_query($dbconn,$sql);
+
+                    while($row=mysqli_fetch_array($query)) {
+
+                        $id = $row['id'];
+                        $name = $row['name'];
+
+                        ?>
+                <tr>
+                    <td><?php echo $id; ?></td>
+                    <td><?php echo $name; ?></td>
+                </tr>
+
+                <?php    } ?>
+            </tbody>
+        </table>
+                    <br>
                     <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                         <div class="row">
                             <div class="col-md-4">
@@ -80,7 +106,7 @@
                                         </div>
                                         <label>Phone Number:</label>
                                         <div class="form-group">
-                                            <input type="text" name="phone"  class="form-control" placeholder="Enter Phone Number" required>E.g 0789898989
+                                            <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" required>E.g 0789898989
                                         </div>
                                         <label>Region:</label>
                                         <div class="form-group">
@@ -93,6 +119,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
@@ -132,11 +159,11 @@
                                         </div>
                                         <label>Phone Number:</label>
                                         <div class="form-group">
-                                            <input type="text" name="gphone"  class="form-control" placeholder="Enter Guarantor Phone Number" required>E.g 0789898989
+                                            <input type="text" name="gphone" class="form-control" placeholder="Enter Guarantor Phone Number" required>E.g 0789898989
                                         </div>
                                         <label>Guarantor Address:</label>
                                         <div class="form-group">
-                                             <textarea name="gaddress" class="form-control" rows="5" placeholder="Write Address"></textarea>
+                                            <textarea name="gaddress" class="form-control" rows="5" placeholder="Write Address"></textarea>
                                         </div>
                                     </div>
                                 </div>
