@@ -16,36 +16,47 @@
             <div class="row">
                 <div class="col">
                     <?php
-                    if(@$_GET['msg'] == 'doneWithPersonalInfo')
+                    if(@$_GET['msg'] == 'memberExists')
                     {
 
                         echo
                             '
-                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+                            <div class="alert alert-danger alert-dismissible fade show text-dark text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Application!</strong> Member al ready applied for loan.
+				            </div>
+                            ';
+                    }
+                    else if(@$_GET['msg'] == 'doneWithPersonalInfo')
+                    {
+
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-dark text-center my-3">
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
 								<strong>Application!</strong> Your Application have been sent successfully.
 				            </div>
                             ';
                     }
 
-                    else if(@$_GET['msg'] == 'nameDoesnotExist')
+                    else if(@$_GET['msg'] == 'checkName')
                     {
                         echo
                             '
-                            <div class="alert alert-danger alert-dismissible fade show text-info text-center my-3">
+                            <div class="alert alert-danger alert-dismissible fade show text-dark text-center my-3">
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Application!</strong> Member Name does not exists.
+								<strong>Application!</strong> Please enter your correct name.
 				            </div>
                             ';
                     }
 
-                    else if(@$_GET['msg'] == 'phoneNumberExist')
+                    else if(@$_GET['msg'] == 'checkPhone')
                     {
                         echo
                             '
-                            <div class="alert alert-danger alert-dismissible fade show text-info text-center my-3">
+                            <div class="alert alert-danger alert-dismissible fade show text-dark text-center my-3">
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Application!</strong> Member Phone Number does not exists.
+								<strong>Application!</strong> Please enter your correct phone number.
 				            </div>
                             ';
                     }
@@ -54,7 +65,7 @@
                     {
                         echo
                             '
-                            <div class="alert alert-danger alert-dismissible fade show text-info text-center my-3">
+                            <div class="alert alert-danger alert-dismissible fade show text-dark text-center my-3">
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
 								<strong>Application!</strong> Member ID does not exists.
 				            </div>
@@ -64,120 +75,96 @@
 
                     ?>
                     <h3 class="text-center text-muted">APPLICATION FORM</h3>
-                     <table class="table table-striped" id="dataTable">
-            <thead>
-                <th>ID</th>
-                <th>Name</th>
-            </thead>
-            <tbody>
-                <?php
-                    $sql = "SELECT * FROM personal_info_tbl";
-                    $query = mysqli_query($dbconn,$sql);
-
-                    while($row=mysqli_fetch_array($query)) {
-
-                        $id = $row['id'];
-                        $name = $row['name'];
-
-                        ?>
-                <tr>
-                    <td><?php echo $id; ?></td>
-                    <td><?php echo $name; ?></td>
-                </tr>
-
-                <?php    } ?>
-            </tbody>
-        </table>
-                    <br>
-                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="text-muted">Step 1:Personal Info</h4>
-                                        <hr>
-                                        <label>Member Id:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="id" class="form-control" placeholder="Enter Member Id" required>
+                    <hr>
+                        <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="text-muted">Step 1:Personal Info</h4>
+                                            <hr>
+                                            <label>Member Id:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="id" class="form-control" placeholder="Enter Member Id" required>
+                                            </div>
+                                            <label>Name:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" placeholder="Enter Full Name" required>
+                                            </div>
+                                            <label>Phone Number:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" required>E.g 0789898989
+                                            </div>
+                                            <label>Region:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="region" class="form-control" placeholder="Enter Region" required>
+                                            </div>
+                                            <label>City:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="city" class="form-control" placeholder="Enter City" required>
+                                            </div>
                                         </div>
-                                        <label>Name:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="Enter Full Name" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="text-muted">Step 2:Financial Info</h4>
+                                            <hr>
+                                            <label>Name Of business:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="business_name" class="form-control" placeholder="Enter Business Name" required>
+                                            </div>
+                                            <label>Number Of Dependant:</label>
+                                            <div class="form-group">
+                                                <input type="number" name="dependant" class="form-control" placeholder="Enter Number Of Dependant" required>
+                                            </div>
+                                            <label>Loan Amount:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="loan_amount" class="form-control" placeholder="Enter Loan Amount" required>E.g 30,000,000
+                                            </div>
+                                            <label>Loan Description:</label>
+                                            <div class="form-group">
+                                                <textarea name="description" class="form-control" rows="5" placeholder="Write Loan Description"></textarea>
+                                            </div>
                                         </div>
-                                        <label>Phone Number:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" required>E.g 0789898989
-                                        </div>
-                                        <label>Region:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="region" class="form-control" placeholder="Enter Region" required>
-                                        </div>
-                                        <label>City:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="city" class="form-control" placeholder="Enter City" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="text-muted">Step 3:Guarantor Info</h4>
+                                            <hr>
+                                            <label>Guarantor Name:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="gname" class="form-control" placeholder="Enter Guarantor Name" required>
+                                            </div>
+                                            <label>Guarantor Relation:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="grelation" class="form-control" placeholder="Enter Guarantor Relation" required>
+                                            </div>
+                                            <label>Phone Number:</label>
+                                            <div class="form-group">
+                                                <input type="text" name="gphone" class="form-control" placeholder="Enter Guarantor Phone Number" required>E.g 0789898989
+                                            </div>
+                                            <label>Guarantor Address:</label>
+                                            <div class="form-group">
+                                                <textarea name="gaddress" class="form-control" rows="5" placeholder="Write Address"></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="text-muted">Step 2:Financial Info</h4>
-                                        <hr>
-                                        <label>Name Of business:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="business_name" class="form-control" placeholder="Enter Business Name" required>
-                                        </div>
-                                        <label>Number Of Dependant:</label>
-                                        <div class="form-group">
-                                            <input type="number" name="dependant" class="form-control" placeholder="Enter Number Of Dependant" required>
-                                        </div>
-                                        <label>Loan Amount:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="loan_amount" class="form-control" placeholder="Enter Loan Amount" required>E.g 30,000,000
-                                        </div>
-                                        <label>Loan Description:</label>
-                                        <div class="form-group">
-                                            <textarea name="description" class="form-control" rows="5" placeholder="Write Loan Description"></textarea>
-                                        </div>
+                            <br>
+                            <div class="row">
+                                <div class="col mx-auto">
+                                    <div class="form-group">
+                                        <input type="submit" name="addInfo" class="form-control btn btn-outline-info" value="Add Info">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="text-muted">Step 3:Guarantor Info</h4>
-                                        <hr>
-                                        <label>Guarantor Name:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="gname" class="form-control" placeholder="Enter Guarantor Name" required>
-                                        </div>
-                                        <label>Guarantor Relation:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="grelation" class="form-control" placeholder="Enter Guarantor Relation" required>
-                                        </div>
-                                        <label>Phone Number:</label>
-                                        <div class="form-group">
-                                            <input type="text" name="gphone" class="form-control" placeholder="Enter Guarantor Phone Number" required>E.g 0789898989
-                                        </div>
-                                        <label>Guarantor Address:</label>
-                                        <div class="form-group">
-                                            <textarea name="gaddress" class="form-control" rows="5" placeholder="Write Address"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col mx-auto">
-                                <div class="form-group">
-                                    <input type="submit" name="addInfo" class="form-control btn btn-outline-info" value="Add Info">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
                 </div>
             </div>
         </div>

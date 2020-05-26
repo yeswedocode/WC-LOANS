@@ -57,31 +57,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mx-auto">
-                    <h3 class="text-center text-muted">Add New User</h3>
+                    <h3 class="text-center text-muted">Change Password</h3>
                     <hr>
                     <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <label>Name:</label>
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
+                            <input type="text" name="name" class="form-control">
                         </div>
                         <label>Email:</label>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
+                            <input type="email" name="name" class="form-control">
                         </div>
-                        <label>Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" disabled>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="updateUser" class="form-control btn btn-outline-info" value="Update User">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-4 mx-auto">
-                    <h3 class="text-center text-muted">Change Password</h3>
-                    <hr>
-                    <form action="<?php $_sERVER['PHP_SELF']; ?>" method="post">
                         <label>Current Password:</label>
                         <div class="form-group">
                             <input type="password" name="currentPassword" class="form-control" placeholder="Enter Current Password">
@@ -90,7 +76,9 @@
                         <div class="form-group">
                             <input type="password" name="newPassword" class="form-control" placeholder="Enter New Password">
                         </div>
-                        <label>Repeat Password:</label>
+                        <span class="badge badge-pill badge-warning">* Must contain at least one number, one letter, any of these characters -<br> "!@#$%" and more than 8 characters long.</span>
+                        <h1></h1>
+                        <label>Retype New Password:</label>
                         <div class="form-group">
                             <input type="password" name="repeatPassword" class="form-control" placeholder="Repeat Password">
                         </div>

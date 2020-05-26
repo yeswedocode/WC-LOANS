@@ -1,5 +1,7 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 
@@ -60,12 +62,46 @@
                         <div class="card-body">
                             <h3 class="text-center text-muted">LOAN REQUEST</h3>
                             <hr>
-                            <div class="jumbotron">
-                                <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
-								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Request!</strong> No Pending Request.
-								</div>
-                            </div>
+                            <?php
+                            $sql = "SELECT * FROM request_tbl";
+                            $resultQuery = mysqli_query($dbconn,$sql);
+                            $numRows = mysqli_num_rows($resultQuery);
+
+                            if($numRows > 0)
+                            {
+                                while($row=mysqli_fetch_array($resultQuery))
+                                {
+                                    $id = $row['id'];
+                                    $amount = $row['amount'];
+
+                                    echo
+                                        '
+                                        <div class="jumbotron">
+                                        <div class="alert alert-info alert-dismissible fade show text-dark text-center my-3">
+								        <button type="button" class="close" data-dismiss="alert">&times;</button>
+								        <strong>Loan Request!</strong> Hello Admin, There is Loan request from '.$id.'.
+                                        <br>
+                                        <br>
+                                        <a href="#"><button class="btn btn-outline-info">Accept</button></a>
+                                        <a href="#"><button class="btn btn-outline-danger">Decline</button></a>
+								        </div>
+                                        </div>
+                                        ';
+                                }
+                            }
+                            else
+                            {
+                                echo
+                                    '
+                                    <div class="jumbotron">
+                                    <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Request!</strong> No Pending Request.
+                                    </div>
+                                    </div>
+                                    ';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

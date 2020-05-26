@@ -69,6 +69,21 @@
           </div>
       </li>
 
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+          SETTINGS
+      </div>
+      <li class="nav-item">
+          <a class="nav-link" href="editUser.php">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Change Password</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="missedPayment.php">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Logout</span></a>
+      </li>
+
       <hr class="sidebar-divider d-none d-md-block">
       <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>

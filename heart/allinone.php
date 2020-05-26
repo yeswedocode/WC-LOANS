@@ -30,6 +30,12 @@ if(isset($_POST['addUser']))
             header("Location: addUser.php?msg=PasswordCheck");
             exit();
         }
+        else if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $pass1))
+        {
+
+            header("Location: addUser.php?msg=passwordRequirement");
+            exit();
+        }
         else
         {
             $hashed_pass = password_hash($pass1, PASSWORD_DEFAULT);
@@ -224,53 +230,53 @@ if(isset($_POST['addInfo']))
     $gaddress = $_POST['gaddress'];
     $status = "pending";
 
-    $checkMemberExist = "SELECT * FROM member_tbl WHERE id='$id'";
+
+    $checkMemberExist = "SELECT * FROM personal_info_tbl WHERE id='$id'";
     $resultQuery = mysqli_query($dbconn,$checkMemberExist);
     $memberRows = mysqli_num_rows($resultQuery);
 
-    if($memberRows == 0)
+    if($memberRows > 0)
     {
-        header("Location: addInfo.php?msg=memberDoesnotExist");
+        header("Location: addInfo.php?msg=memberExists");
         exit();
     }
 
     else
     {
-        $checkPhoneNumberExist = "SELECT * FROM member_tbl WHERE phone='$phone'";
-        $resultQuery = mysqli_query($dbconn,$checkPhoneNumberExist);
-        $phoneRows = mysqli_num_rows($resultQuery);
+        $checkMemberExist = "SELECT * FROM member_tbl WHERE id='$id'";
+        $resultQuery = mysqli_query($dbconn,$checkMemberExist);
 
-        if($phoneRows == 0)
+        while($row=mysqli_fetch_array($resultQuery))
         {
-            header("Location: addInfo.php?msg=phoneNumberExist");
+            $nameData = $row['name'];
+            $phoneData = $row['phone'];
+        }
+
+        if($name != $nameData)
+        {
+            header("Location: addInfo.php?msg=checkName");
             exit();
         }
 
+        else if($phone != $phoneData)
+        {
+            header("Location: addInfo.php?msg=checkPhone");
+            exit();
+        }
         else
         {
-             $checkNameExist = "SELECT * FROM member_tbl WHERE name='$name'";
-             $resultQuery = mysqli_query($dbconn,$checkNameExist);
-             $nameRows = mysqli_num_rows($resultQuery);
+            $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$gaddress','$status')";
+            $resultQuery = mysqli_query($dbconn,$createMemberQuery);
 
-            if($nameRows == 0)
-            {
-                header("Location: addInfo.php?msg=nameDoesnotExist");
-                exit();
-            }
+            $toRequest = "INSERT INTO request_tbl(id,amount) VALUES('$id','$loan_amount')";
+            $resultQuery = mysqli_query($dbconn,$toRequest);
 
-            else
-            {
-               $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$gaddress','$status')";
-
-               $resultQuery = mysqli_query($dbconn,$createMemberQuery);
-
-               header("Location: addInfo.php?msg=doneWithPersonalInfo");
-               exit();
-            }
-        }
-
+            header("Location: addInfo.php?msg=doneWithPersonalInfo");
+            exit();
+                }
     }
 }
+
 
 /////////////////////// END OF PERSONAL INFORMATION SCRIPTS  ///////////////////////////////////////
 
@@ -291,8 +297,8 @@ if(isset($_POST['changePassword']))
 
     while($row=mysqli_fetch_array($resultQuery))
     {
-        $name = $_POST['name'];
-        $password = $_POST['password'];
+        $name = $row['name'];
+        $password = $row['password'];
     }
 
     if($currentPassword != $password)

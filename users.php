@@ -95,13 +95,15 @@
                     ?>
                     <table class="table table-striped" id="dataTable">
                         <thead class="thead-dark">
+                            <th>SN</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Action</th>
+<!--                            <th>Action</th>-->
                         </thead>
                         <tbody>
                             <?php
                             $dbconn = mysqli_connect("localhost","root","","wc");
+                            $sn = 1;
                             $sql = "SELECT * FROM users";
                             $res = mysqli_query($dbconn,$sql);
 
@@ -113,13 +115,16 @@
                             ?>
 
                             <tr>
+                                <td><?php echo $sn++; ?></td>
                                 <td><?php echo $name; ?></td>
                                 <td><?php echo $email; ?></td>
+<!--
                                 <td>
                                     <a href="editUser.php?id=<?php echo $id ?>"><span class="badge badge-pill badge-info">Edit</span></a>
                                     |
                                     <a href="heart/allinone.php?delete_id=<?php echo $id ?>"><span class="badge badge-pill badge-danger">Delete</span></a>
                                 </td>
+-->
                             </tr>
 
                             <?php } ?>
