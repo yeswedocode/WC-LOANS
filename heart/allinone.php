@@ -13,6 +13,11 @@ if(isset($_POST['signIn']))
     $selectQuery = "SELECT * FROM users WHERE name=?";
     $stmt = mysqli_stmt_init($dbconn);
 
+    if($stmt)
+    {
+        echo "we are good";
+    }
+
     if(!mysqli_stmt_prepare($stmt,$selectQuery))
     {
         header("Location: login.php?msg=sqlerror");
