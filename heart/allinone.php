@@ -7,8 +7,8 @@ include "db.php";
 
 if(isset($_POST['signIn']))
 {
-    $username = mysqli_real_escape_string($_POST['username']);
-    $password = mysqli_real_escape_string($_POST['password']);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     $selectQuery = "SELECT * FROM users WHERE name=?";
     $stmt = mysqli_stmt_init($dbconn);
