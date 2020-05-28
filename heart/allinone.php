@@ -2,14 +2,12 @@
 
 include "db.php";
 
-
 /////////////// LOGIN SCRIPTS ////////////////////////////////////////////////////////
-
 
 
 if(isset($_POST['signIn']))
 {
-    $username = mysqli_real_escape_string($_POST['name']);
+    $username = mysqli_real_escape_string($_POST['username']);
     $password = mysqli_real_escape_string($_POST['password']);
 
     $selectQuery = "SELECT * FROM users WHERE name=?";

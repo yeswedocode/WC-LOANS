@@ -30,7 +30,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col">
-                                    <form action="" method="post">
+                                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                                         <label>Username:</label>
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control" placeholder="Enter Username">
