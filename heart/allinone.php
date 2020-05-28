@@ -2,6 +2,58 @@
 
 include "db.php";
 
+
+/////////////// LOGIN SCRIPTS ////////////////////////////////////////////////////////
+
+
+
+if(isset($_POST['signIn']))
+{
+    $username = mysqli_real_escape_string($_POST['name']);
+    $password = mysqli_real_escape_string($_POST['password']);
+
+    $selectQuery = "SELECT * FROM users WHERE name=?";
+    $stmt = mysqli_stmt_init($dbconn);
+
+    if(!mysqli_stmt_prepare($stmt,$selectQuery))
+    {
+        header("Location: login.php?msg=sqlerror");
+        exit();
+    }
+    else
+    {
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        $resultQuery = mysqli_stmt_get_result($stmt);
+
+        if($row = mysqli_fetch_assoc($resultQuery))
+        {
+            $password_check = password_verify($password,$row['password']);
+
+            if($password_check == false)
+            {
+                header("Location: login.php?msg=wrongPassword");
+                exit();
+            }
+            else if($password_check == true)
+            {
+                $_SESSION['name'] = $row['name'];
+
+                header("Location: index.php?msg=loginSuccess");
+                exit();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 ///////////////////////////////// USER SCRIPTS //////////////////////////////////////////
 
 //INSERT USER
@@ -399,37 +451,5 @@ if(isset($_POST['addTransaction']))
     exit();
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
