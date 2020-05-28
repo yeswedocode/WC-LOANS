@@ -60,7 +60,7 @@
                 <div class="col mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="text-center text-muted">LOAN REQUEST</h3>
+                            <h3 class="text-center text-muted" style="font-style:italic"><strong>LOAN REQUEST</strong></h3>
                             <hr>
                             <?php
                             $sql = "SELECT * FROM request_tbl";
@@ -71,21 +71,23 @@
                             {
                                 while($row=mysqli_fetch_array($resultQuery))
                                 {
+
                                     $id = $row['id'];
                                     $amount = $row['amount'];
+                                    $date = $row['date'];
 
                                     echo
                                         '
-                                        <div class="jumbotron">
                                         <div class="alert alert-info alert-dismissible fade show text-dark text-center my-3">
 								        <button type="button" class="close" data-dismiss="alert">&times;</button>
-								        <strong>Loan Request!</strong> Hello Admin, There is Loan request from '.$id.'.
+                                        <h5 style="font-style:italic">Hello Admin, <mark>'.$id.'</mark> would like to apply for loan.</h5>
                                         <br>
+                                        <a href="processLoan.php?pending_id='.$id.'" class="btn btn-outline-info">Accept</a>
+                                        <a href="heart/allinone.php?deletePending_id='.$id.'"><button class="btn btn-outline-danger">Decline</button></a>
                                         <br>
-                                        <a href="#"><button class="btn btn-outline-info">Accept</button></a>
-                                        <a href="#"><button class="btn btn-outline-danger">Decline</button></a>
+                                        <hr>
+                                        <h6 class="text-center" style="font-style:italic">Date: '.$date.'</h6>
 								        </div>
-                                        </div>
                                         ';
                                 }
                             }

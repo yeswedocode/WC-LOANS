@@ -4,7 +4,6 @@
 
 <?php include 'includes/sidebar.inc.php'; ?>
 
-
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -49,59 +48,85 @@
                         </a>
                     </div>
                 </li>
-
             </ul>
-
         </nav>
 
         <div class="container">
             <div class="row">
-                <div class="col mx-auto">
-                    <table class="table table-striped">
+                <div class="col">
+                    <a href="addWallet.php" class="btn btn-outline-info float-right">Add Payment</a>
+                    <br>
+                    <br>
+                    <?php
+                    if(@$_GET['msg'] == 'success')
+                    {
+
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Successfully!</strong> User Added successfully.
+				            </div>
+                            ';
+                    }
+
+                    else if(@$_GET['msg'] == 'updateUser')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Update User!</strong> User Updated successfully.
+				            </div>
+                            ';
+                    }
+                    else if(@$_GET['msg'] == 'deleteUser')
+                    {
+                        echo
+                            '
+                            <div class="alert alert-danger alert-dismissible fade show text-danger text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Delete User!</strong> User Delete successfully.
+				            </div>
+                            ';
+                    }
+                    ?>
+                    <table class="table table-striped" id="dataTable">
                         <thead class="thead-dark">
-                            <th>Member ID</th>
                             <th>Name</th>
                             <th>Amount</th>
-                            <th>Date Approved</th>
-                            <th>Action</th>
+                            <th>Payment Type</th>
+                            <th>Date</th>
                         </thead>
                         <tbody>
                             <?php
-                            $selectQuery = "SELECT * FROM personal_info_tbl WHERE status='active'";
+                            $selectQuery = "SELECT * FROM wallet";
                             $resultQuery = mysqli_query($dbconn,$selectQuery);
                             $total = null;
 
                             while($row=mysqli_fetch_array($resultQuery))
                             {
-
-                                $id = $row['id'];
                                 $name = $row['name'];
-                                $amount = $row['loan_amount'];
+                                $amount = $row['amount'];
+                                $type = $row['type'];
                                 $date = $row['date'];
-                                $amount = $row['loan_amount'];
                                 $total += $amount;
                             ?>
                             <tr>
-                                <td><?php echo $id; ?></td>
                                 <td><?php echo $name; ?></td>
-                                <td><?php echo number_format($amount); ?>/=</td>
+                                <td>Tzs&nbsp;<?php echo number_format($amount); ?>/=</td>
+                                <td><?php echo $type; ?></td>
                                 <td><?php echo $date; ?></td>
-                                <td>
-                                    <a href="#" class="text-info">Check</a>
-                                    ||
-                                    <a href="#" class="text-danger">Delete</a>
-                                </td>
                             </tr>
-                    <?php
-                            }
-                        ?>
-                               </tbody>
+
+                            <?php } ?>
+                        </tbody>
                     </table>
                     <br>
                     <div class="d-flex flex-row-reverse bg-info text-light p-3 rounded-bottom">
                         <div class="py-1 px-5 text-right">
-                            <div class="mb-2">Total Amount Refunded Loan</div>
-                            <div class="h2 text-light">Tzs <?php echo number_format($total); ?>/=</div>
+                            <div class="mb-2 fa-2x">Total Wallet</div>
+                            <div class="h3 text-light">Tzs <?php echo number_format($total); ?>/=</div>
                         </div>
                     </div>
                 </div>

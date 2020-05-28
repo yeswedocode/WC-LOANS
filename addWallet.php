@@ -56,58 +56,60 @@
 
         <div class="container">
             <div class="row">
-                <div class="col mx-auto">
-                    <table class="table table-striped">
-                        <thead class="thead-dark">
-                            <th>Member ID</th>
-                            <th>Name</th>
-                            <th>Amount</th>
-                            <th>Date Approved</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $selectQuery = "SELECT * FROM personal_info_tbl WHERE status='active'";
-                            $resultQuery = mysqli_query($dbconn,$selectQuery);
-                            $total = null;
-
-                            while($row=mysqli_fetch_array($resultQuery))
+                <div class="col-md-4 mx-auto">
+                    <h3 class="text-center text-muted">Add Transaction</h3>
+                       <?php
+                            if(@$_GET['msg'] == 'memberExist')
                             {
 
-                                $id = $row['id'];
-                                $name = $row['name'];
-                                $amount = $row['loan_amount'];
-                                $date = $row['date'];
-                                $amount = $row['loan_amount'];
-                                $total += $amount;
-                            ?>
-                            <tr>
-                                <td><?php echo $id; ?></td>
-                                <td><?php echo $name; ?></td>
-                                <td><?php echo number_format($amount); ?>/=</td>
-                                <td><?php echo $date; ?></td>
-                                <td>
-                                    <a href="#" class="text-info">Check</a>
-                                    ||
-                                    <a href="#" class="text-danger">Delete</a>
-                                </td>
-                            </tr>
-                    <?php
+                                echo
+                                    '
+                                    <div class="alert alert-warning alert-dismissible fade show text-warning text-center my-3">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Member!</strong> Member Id Exists.
+                                    </div>
+                                    ';
                             }
+                            if(@$_GET['msg'] == 'phoneNumberExist')
+                            {
+
+                                echo
+                                    '
+                                    <div class="alert alert-warning alert-dismissible fade show text-warning text-center my-3">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Member!</strong> Phone Number Al ready Exists.
+                                    </div>
+                                    ';
+                            }
+
+
                         ?>
-                               </tbody>
-                    </table>
-                    <br>
-                    <div class="d-flex flex-row-reverse bg-info text-light p-3 rounded-bottom">
-                        <div class="py-1 px-5 text-right">
-                            <div class="mb-2">Total Amount Refunded Loan</div>
-                            <div class="h2 text-light">Tzs <?php echo number_format($total); ?>/=</div>
+                    <hr>
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+                        <label>Name:</label>
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Enter Full Name">
                         </div>
-                    </div>
+                        <label>Amount:</label>
+                        <div class="form-group">
+                            <input type="number" name="amount" class="form-control" placeholder="Enter Amount">
+                        </div>
+                        <label>Type:</label>
+                        <div class="form-group">
+                            <select class="form-control" name="type">
+                                <option value="CRDB">CRBD</option>
+                                <option value="NMB">NMB</option>
+                                <option value="NBC">NBC</option>
+                                <option value="MPESA">M-PESA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="addTransaction" class="form-control btn btn-outline-info" value="Add Transaction">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
     </div>
     <footer class="sticky-footer bg-light">
         <div class="container my-auto">
@@ -117,5 +119,4 @@
         </div>
     </footer>
 </div>
-
-<?php include 'includes/footer.inc.php'; ?>
+<?php include 'includes/footer.inc.php' ?>

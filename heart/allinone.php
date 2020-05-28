@@ -8,7 +8,7 @@ include "db.php";
 
 if(isset($_POST['addUser']))
 {
-    $name = $_POST['name'];
+    $name = strtoupper($_POST['name']);
     $email = $_POST['email'];
     $pass1 = $_POST['password'];
     $pass2 = $_POST['repeat_password'];
@@ -59,10 +59,10 @@ if(isset($_GET['id']))
 
     while($row = mysqli_fetch_array($res))
     {
-        $id         = $row['id'];
-        $name       = $row['name'];
-        $email      = $row['email'];
-        $password   = $row['password'];
+        $id         = strtoupper($row['id']);
+        $name       = strtoupper($row['name']);
+        $email      = strtoupper($row['email']);
+        $password   = strtoupper($row['password']);
     }
 
 }
@@ -71,8 +71,8 @@ if(isset($_GET['id']))
 
 if(isset($_POST['updateUser']))
 {
-    $id         = $_POST['id'];
-    $name       = $_POST['name'];
+    $id         = strtoupper($_POST['id']);
+    $name       = strtoupper($_POST['name']);
     $email      = $_POST['email'];
     $password   = $_POST['password'];
 
@@ -165,10 +165,10 @@ if(isset($_GET['member_id']))
 
     while($row=mysqli_fetch_array($resultQuery))
     {
-        $memberId       = $row['id'];
-        $memberName     = $row['name'];
-        $memberPhone    = $row['phone'];
-        $memberAddress  = $row['address'];
+        $memberId       = strtoupper($row['id']);
+        $memberName     = strtoupper($row['name']);
+        $memberPhone    = strtoupper($row['phone']);
+        $memberAddress  = strtoupper($row['address']);
 
     }
 
@@ -180,10 +180,10 @@ if(isset($_GET['member_id']))
 if(isset($_POST['updateMember']))
 {
 
-    $memberId       = $_POST['id'];
-    $memberName     = $_POST['name'];
-    $memberPhone    = $_POST['phone'];
-    $memberAddress  = $_POST['address'];
+    $memberId       = strtoupper($_POST['id']);
+    $memberName     = strtoupper($_POST['name']);
+    $memberPhone    = strtoupper($_POST['phone']);
+    $memberAddress  = strtoupper($_POST['address']);
 
     $updateMemberQuery = "UPDATE member_tbl SET name='$memberName,phone='$memberPhone',address='$memberAddress' WHERE id='$memberId'";
     $resultQuery = mysqli_query($dbconn,$updateMemberQuery);
@@ -215,20 +215,23 @@ if(isset($_GET['delete_member']))
 
 if(isset($_POST['addInfo']))
 {
-    $id         = $_POST['id'];
-    $name       = $_POST['name'];
-    $phone      = $_POST['phone'];
-    $region     = $_POST['region'];
-    $city       = $_POST['city'];
-    $business_name = $_POST['business_name'];
-    $dependant   = $_POST['dependant'];
-    $loan_amount = $_POST['loan_amount'];
-    $description = $_POST['description'];
-    $gname = $_POST['gname'];
-    $grelation = $_POST['grelation'];
-    $gphone = $_POST['gphone'];
-    $gaddress = $_POST['gaddress'];
-    $status = "pending";
+    $id         = strtoupper($_POST['id']);
+    $name       = strtoupper($_POST['name']);
+    $phone      = strtoupper($_POST['phone']);
+    $region     = strtoupper($_POST['region']);
+    $city       = strtoupper($_POST['city']);
+    $business_name = strtoupper($_POST['business_name']);
+    $dependant   = strtoupper($_POST['dependant']);
+    $loan_amount = strtoupper($_POST['loan_amount']);
+    $description = strtoupper($_POST['description']);
+    $gname = strtoupper($_POST['gname']);
+    $grelation = strtoupper($_POST['grelation']);
+    $gphone = strtoupper($_POST['gphone']);
+    $gaddress = strtoupper($_POST['gaddress']);
+    $status = strtoupper("pending");
+    $approve_name = strtoupper("null");
+    $approve_phone = strtoupper("null");
+    $date = date("d-m-Y");
 
 
     $checkMemberExist = "SELECT * FROM personal_info_tbl WHERE id='$id'";
@@ -248,8 +251,8 @@ if(isset($_POST['addInfo']))
 
         while($row=mysqli_fetch_array($resultQuery))
         {
-            $nameData = $row['name'];
-            $phoneData = $row['phone'];
+            $nameData = strtoupper($row['name']);
+            $phoneData = strtoupper($row['phone']);
         }
 
         if($name != $nameData)
@@ -265,10 +268,10 @@ if(isset($_POST['addInfo']))
         }
         else
         {
-            $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$gaddress','$status')";
+            $createMemberQuery = "INSERT INTO personal_info_tbl(id,name,phone,region,city,business_name,dependant,loan_amount,description,gname,grelation,gphone,gaddress,status,approve_name,approve_phone) VALUES('$id','$name','$phone','$region','$city','$business_name','$dependant','$loan_amount','$description','$gname','$grelation','$gphone','$gaddress','$status','$approve_name','$approve_phone')";
             $resultQuery = mysqli_query($dbconn,$createMemberQuery);
 
-            $toRequest = "INSERT INTO request_tbl(id,amount) VALUES('$id','$loan_amount')";
+            $toRequest = "INSERT INTO request_tbl(id,amount,date) VALUES('$id','$loan_amount','$date')";
             $resultQuery = mysqli_query($dbconn,$toRequest);
 
             header("Location: addInfo.php?msg=doneWithPersonalInfo");
@@ -333,6 +336,99 @@ if(isset($_POST['changePassword']))
              }
 
 }
+
+//////////////////////// END CHANGE PASSWORD SCRIPTS   /////////////////////////////////////////////////////////
+
+
+if(isset($_GET['pending_id']))
+{
+    $id = $_GET['pending_id'];
+    $selectQuery = "SELECT * FROM personal_info_tbl WHERE id='$id'";
+    $resultQuery = mysqli_query($dbconn,$selectQuery);
+
+    while($row=mysqli_fetch_array($resultQuery))
+    {
+        $id                 = strtoupper($row['id']);
+        $name               = strtoupper($row['name']);
+        $phone              = strtoupper($row['phone']);
+        $region             = strtoupper($row['region']);
+        $city               = strtoupper($row['city']);
+        $business_name      = strtoupper($row['business_name']);
+        $dependant          = strtoupper($row['dependant']);
+        $loan_amount        = strtoupper($row['loan_amount']);
+        $description        = strtoupper($row['description']);
+        $gname              = strtoupper($row['gname']);
+        $grelation          = strtoupper($row['grelation']);
+        $gphone             = strtoupper($row['gphone']);
+        $gaddress           = strtoupper($row['gaddress']);
+    }
+}
+
+if(isset($_POST['Loan']))
+{
+    $id         = $_POST['id'];
+    $approve_name = strtoupper($_POST['approve_name']);
+    $approve_phone = $_POST['approve_phone'];
+    $status = $_POST['status'];
+    $date = date("d-m-Y");
+
+
+    $updateQuery = "UPDATE personal_info_tbl SET status='$status',approve_name='$approve_name', approve_phone='$approve_phone', date='$date' WHERE id='$id'";
+    $resultQuery = mysqli_query($dbconn,$updateQuery);
+
+    $deleteQuery = "DELETE FROM request_tbl WHERE id='$id'";
+    $resultQuery = mysqli_query($dbconn,$sql);
+
+    header("Location: index.php?msg=newLoan");
+    exit();
+
+}
+
+
+if(isset($_POST['addTransaction']))
+{
+    $name = strtoupper($_POST['name']);
+    $amount = $_POST['amount'];
+    $type = strtoupper($_POST['type']);
+    $date = date("d-m-Y");
+
+    $insertQuery = "INSERT INTO wallet(name,amount,type,date) VALUES('$name','$amount','$type','$date')";
+    $resultQuery = mysqli_query($dbconn,$insertQuery);
+
+    header("Location: wallet.php?msg=paymentAddedSuccess");
+    exit();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -93,7 +93,7 @@
                                             </div>
                                             <label>Phone Number:</label>
                                             <div class="form-group">
-                                                <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" required>E.g 0789898989
+                                                <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" required>
                                             </div>
                                             <label>Region:</label>
                                             <div class="form-group">
@@ -122,7 +122,7 @@
                                             </div>
                                             <label>Loan Amount:</label>
                                             <div class="form-group">
-                                                <input type="text" name="loan_amount" class="form-control" placeholder="Enter Loan Amount" required>E.g 30,000,000
+                                                <input type="number" name="loan_amount" class="form-control" placeholder="Enter Loan Amount" required>
                                             </div>
                                             <label>Loan Description:</label>
                                             <div class="form-group">
