@@ -2,6 +2,8 @@
 
 <?php include 'heart/allinone.php'; ?>
 
+<?php if(isset($_SESSION['name'])) { ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 
@@ -120,3 +122,15 @@
     </footer>
 </div>
 <?php include 'includes/footer.inc.php' ?>
+
+
+<?php } ?>
+
+<?php
+if(!$_SESSION['name'])
+{
+    header("Location: login.php?msg=login");
+    exit();
+}
+
+?>

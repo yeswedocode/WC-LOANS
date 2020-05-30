@@ -1,5 +1,9 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
+<?php if(isset($_SESSION['name'])) { ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 
@@ -56,10 +60,10 @@
                 <div class="col-md-4 mx-auto">
                     <h3 class="text-center text-muted">Add Payment</h3>
                     <hr>
-                    <form action="" method="post">
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                         <label>Member ID:</label>
                         <div class="form-group">
-                            <input type="text" name="id" class="form-control" placeholder="Enter Member ID">
+                            <input type="text" name="member_id" class="form-control" placeholder="Enter Member ID">
                         </div>
                         <label>Transaction ID:</label>
                         <div class="form-group">
@@ -67,11 +71,16 @@
                         </div>
                         <label>Amount Paid:</label>
                         <div class="form-group">
-                            <input type="text" name="amount" class="form-control" placeholder="Enter Amount">
+                            <input type="number" name="amount" class="form-control" placeholder="Enter Amount">
                         </div>
-                        <label>Date Paid:</label>
+                        <label>Type:</label>
                         <div class="form-group">
-                            <input type="text" name="date_paid" class="form-control" placeholder="Date Paid">
+                            <select class="form-control" name="type">
+                                <option value="CRDB">CRBD</option>
+                                <option value="NMB">NMB</option>
+                                <option value="NBC">NBC</option>
+                                <option value="MPESA">M-PESA</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="submit" name="addPayment" class="form-control btn btn-outline-info" value="Add Payment">
@@ -93,3 +102,14 @@
 </div>
 
 <?php include 'includes/footer.inc.php' ?>
+
+<?php } ?>
+
+<?php
+if(!$_SESSION['name'])
+{
+    header("Location: login.php?msg=login");
+    exit();
+}
+
+?>

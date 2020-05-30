@@ -56,38 +56,68 @@
 
         </nav>
 
+        <div class="container-fluid pb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item mr-1">
+                            <a class="nav-link btn btn-outline-info" href="wallet.php">ALL</a>
+                        </li>
+                        <li class="nav-item mr-1">
+                            <a class="nav-link btn btn-outline-info" href="nmb.php">NMB</a>
+                        </li>
+                        <li class="nav-item mr-1">
+                            <a class="nav-link btn btn-outline-info" href="nbc.php">NBC</a>
+                        </li>
+                        <li class="nav-item mr-1">
+                            <a class="nav-link active btn btn-outline-info" href="crdb.php">CRDB</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-info" href="mpesa.php">MPESA</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mx-auto">
-                    <h3 class="text-center text-muted">Change Password</h3>
-                    <hr>
-                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-                        <label>Name:</label>
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control">
+                <div class="col">
+                    <table class="table table-striped" id="dataTable">
+                        <thead class="thead-dark">
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                                   $selectQuery = "SELECT * FROM wallet WHERE type='CRDB'";
+                                   $resultQuery = mysqli_query($dbconn,$selectQuery);
+                                   $total = null;
+
+                                   while($row=mysqli_fetch_array($resultQuery))
+                                   {
+                                       $name = $row['name'];
+                                       $amount = $row['amount'];
+                                       $date = $row['date'];
+
+                                       $total += $row['amount'];
+                                   ?>
+                            <tr>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $amount; ?></td>
+                                <td><?php echo $date; ?></td>
+                            </tr>
+                            <?php   } ?>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="d-flex flex-row-reverse bg-info text-light p-3 rounded-bottom">
+                        <div class="py-1 px-5 text-right">
+                            <div class="mb-2 fa-2x">Total Amount<sup>crdb</sup></div>
+                            <div class="h3 text-light">Tzs <?php echo number_format($total); ?>/=</div>
                         </div>
-                        <label>Email:</label>
-                        <div class="form-group">
-                            <input type="email" name="name" class="form-control">
-                        </div>
-                        <label>Current Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="currentPassword" class="form-control" placeholder="Enter Current Password">
-                        </div>
-                        <label>New Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="newPassword" class="form-control" placeholder="Enter New Password">
-                        </div>
-                        <span class="badge badge-pill badge-warning">* Must contain at least one number, one letter, any of these characters -<br> "!@#$%" and more than 8 characters long.</span>
-                        <h1></h1>
-                        <label>Retype New Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="repeatPassword" class="form-control" placeholder="Repeat Password">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="changePassword" class="form-control btn btn-outline-info" value="Change password">
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

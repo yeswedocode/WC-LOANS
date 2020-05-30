@@ -2,6 +2,8 @@
 
 <?php include 'heart/allinone.php'; ?>
 
+<?php if(isset($_SESSION['name'])) { ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
@@ -50,6 +52,30 @@
                 </li>
             </ul>
         </nav>
+
+        <div class="container-fluid pb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item mr-1">
+                            <a class="nav-link active btn btn-outline-info" href="wallet.php">ALL</a>
+                        </li>
+                        <li class="nav-item mr-1">
+                            <a class="nav-link btn btn-outline-info" href="nmb.php">NMB</a>
+                        </li>
+                        <li class="nav-item mr-1">
+                            <a class="nav-link btn btn-outline-info" href="nbc.php">NBC</a>
+                        </li>
+                        <li class="nav-item mr-1">
+                            <a class="nav-link btn btn-outline-info" href="crdb.php">CRDB</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-info" href="mpesa.php">MPESA</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <div class="container">
             <div class="row">
@@ -144,3 +170,15 @@
 </div>
 
 <?php include 'includes/footer.inc.php'; ?>
+
+
+<?php } ?>
+
+<?php
+if(!$_SESSION['name'])
+{
+    header("Location: login.php?msg=login");
+    exit();
+}
+
+?>

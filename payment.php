@@ -1,5 +1,9 @@
 <?php include 'includes/header.inc.php'; ?>
 
+<?php include 'heart/allinone.php'; ?>
+
+<?php if(isset($_SESSION['name'])){ ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 
@@ -53,20 +57,50 @@
         <div class="container">
             <div class="row">
                 <div class="col mx-auto">
-                    <a href="addPayment.php" class="btn btn-outline-info far fa-arrow-alt-circle-left">&nbsp;BACK</a>
-                    <a href="addPayment.php" class="btn btn-outline-info">ADD PAYMENT</a>
-                    <a href="addPayment.php" class="btn btn-outline-info far fa-file-pdf float-right">&nbsp;GENERATE PDF</a>
+                    <a href="addPayment.php" class="btn btn-outline-info float-right">ADD PAYMENT</a>
                     <br>
                     <br>
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="dataTable">
                         <thead class="thead-dark">
                             <th>ID</th>
                             <th>Transaction ID</th>
                             <th>Amout Paid</th>
+                            <th>Type</th>
                             <th>Received Date</th>
-                            <th>Action</th>
                         </thead>
+                        <tbody>
+                            <?php
+                                   $selectQuery = "SELECT * FROM payment";
+                                   $resultQuery = mysqli_query($dbconn,$selectQuery);
+                                   $total = null;
+
+                                   while($row=mysqli_fetch_array($resultQuery))
+                                   {
+                                       $member = $row['member_id'];
+                                       $transaction_id = $row['transaction_id'];
+                                       $amount = $row['amount'];
+                                       $date = $row['date'];
+                                       $type = $row['type'];
+
+                                       $total += $row['amount'];
+                                   ?>
+                            <tr>
+                                <td><?php echo $member; ?></td>
+                                <td><?php echo $transaction_id; ?></td>
+                                <td>Tzs&nbsp;<?php echo number_format($amount); ?>/=</td>
+                                <td><?php echo $type; ?></td>
+                                <td><?php echo $date; ?></td>
+                            </tr>
+                            <?php   } ?>
+                        </tbody>
                     </table>
+                    <br>
+                    <div class="d-flex flex-row-reverse bg-info text-light p-3 rounded-bottom">
+                        <div class="py-1 px-5 text-right">
+                            <div class="mb-2 fa-2x">Total Payment</div>
+                            <div class="h3 text-light">Tzs <?php echo number_format($total); ?>/=</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,3 +116,15 @@
 </div>
 
 <?php include 'includes/footer.inc.php'; ?>
+
+
+<?php } ?>
+
+<?php
+if(!$_SESSION['name'])
+{
+    header("Location: login.php?msg=login");
+    exit();
+}
+
+?>

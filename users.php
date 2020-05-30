@@ -2,6 +2,8 @@
 
 <?php include 'heart/allinone.php'; ?>
 
+<?php if(isset($_SESSION['name'])){ ?>
+
 <?php include 'includes/sidebar.inc.php'; ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
@@ -145,3 +147,15 @@
 </div>
 
 <?php include 'includes/footer.inc.php' ?>
+
+
+<?php } ?>
+
+<?php
+if(!$_SESSION['name'])
+{
+    header("Location: login.php?msg=login");
+    exit();
+}
+
+?>

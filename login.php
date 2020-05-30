@@ -1,4 +1,7 @@
 <?php include 'includes/header.inc.php'; ?>
+
+<?php include 'heart/allinone.php'; ?>
+
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -21,6 +24,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 mx-auto">
                     <div class="card">
                         <div class="card-body">
@@ -40,10 +44,10 @@
                                             <input type="password" name="password" class="form-control" placeholder="Enter Password">
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" name="signIn" class="form-control btn btn-outline-info" value="Sign In">
+                                            <input type="submit" name="login" class="form-control btn btn-outline-info" value="Sign In">
                                         </div>
-                                        <center><a class="text-info" href="#">Forget Your Password?Click to reset.</a></center>
                                     </form>
+                                    <center><a class="text-info" href="#">Forget Your Password?Click to reset.</a></center>
                                 </div>
                             </div>
                         </div>

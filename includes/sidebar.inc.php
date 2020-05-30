@@ -69,6 +69,12 @@
           </div>
       </li>
 
+      <li class="nav-item">
+          <a class="nav-link" href="wallet.php">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Transaction</span></a>
+      </li>
+
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
           SETTINGS
@@ -79,7 +85,7 @@
               <span>Change Password</span></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="missedPayment.php">
+          <a class="nav-link" href="logout.php">
               <i class="fas fa-fw fa-chart-area"></i>
               <span>Logout</span></a>
       </li>

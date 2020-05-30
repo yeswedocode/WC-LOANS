@@ -13,6 +13,51 @@ while($row=mysqli_fetch_array($resultQuery))
     $total += $amount;
 
 }
+
+$dbconn = mysqli_connect("localhost","root","","wc");
+$selectQuery = "SELECT * FROM payment";
+$resultQuery = mysqli_query($dbconn,$selectQuery);
+$totalPay = null;
+
+while($row=mysqli_fetch_array($resultQuery))
+{
+    $amount = $row['amount'];
+    $totalPay += $amount;
+
+}
+
+
+$dbconn = mysqli_connect("localhost","root","","wc");
+$selectQuery = "SELECT * FROM personal_info_tbl WHERE status='active'";
+$resultQuery = mysqli_query($dbconn,$selectQuery);
+$totalP = null;
+
+while($row=mysqli_fetch_array($resultQuery))
+{
+    $name = $row['name'];
+    $amount = $row['loan_amount'];
+    $totalP += $amount;
+
+    $totalAmount = ($total + $totalPay) - $totalP;
+
+}
+
+
+$dbconn = mysqli_connect("localhost","root","","wc");
+$selectQuery = "SELECT * FROM personal_info_tbl WHERE status='active'";
+$resultQuery = mysqli_query($dbconn,$selectQuery);
+$totalP = null;
+
+while($row=mysqli_fetch_array($resultQuery))
+{
+    $name = $row['name'];
+    $amount = $row['loan_amount'];
+    $totalP += $amount;
+
+}
+
+
+
 ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
@@ -45,7 +90,7 @@ while($row=mysqli_fetch_array($resultQuery))
                 <div class="topbar-divider d-none d-sm-block"></div>
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
                         <img class="img-profile rounded-circle" src="img/wc.png" width="100">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -53,7 +98,7 @@ while($row=mysqli_fetch_array($resultQuery))
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </a>
-                        <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
+                        <a class="dropdown-item" href="logout.php">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
@@ -74,8 +119,8 @@ while($row=mysqli_fetch_array($resultQuery))
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="wallet.php">My Wallet</a></div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Tzs&nbsp;<?php echo number_format($total); ?>/=</div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">My Wallet</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Tzs&nbsp;<?php echo number_format($totalAmount); ?>/=</div>
                                 </div>
 <!--
                                 <div class="col-auto">
@@ -95,7 +140,7 @@ while($row=mysqli_fetch_array($resultQuery))
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a href="loan.php" class="text-success">Loans</a></div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Tzs&nbsp;<?php echo number_format($totalP); ?>/=</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -129,7 +174,7 @@ while($row=mysqli_fetch_array($resultQuery))
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1"><a href="payment.php" class="text-info">Payment</a></div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Tzs&nbsp;<?php echo number_format($totalPay); ?>/=</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

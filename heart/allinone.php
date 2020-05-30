@@ -4,56 +4,24 @@ include "db.php";
 
 /////////////// LOGIN SCRIPTS ////////////////////////////////////////////////////////
 
-
-if(isset($_POST['signIn']))
+if(isset($_POST['login']))
 {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $selectQuery = "SELECT * FROM users WHERE name=?";
-    $stmt = mysqli_stmt_init($dbconn);
+    $selectQuery = "SELECT * FROM users WHERE name='$username' AND password='$password'";
+    $resultQuery = mysqli_query($dbconn,$selectQuery);
 
-    if($stmt)
+    if(mysqli_num_rows($resultQuery) == 1)
     {
-        echo "we are good";
-    }
+       $row = mysqli_fetch_array($resultQuery);
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['id'] = $row['id'];
 
-    if(!mysqli_stmt_prepare($stmt,$selectQuery))
-    {
-        header("Location: login.php?msg=sqlerror");
+        header("Location: index.php?msg=success");
         exit();
     }
-    else
-    {
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_execute($stmt);
-        $resultQuery = mysqli_stmt_get_result($stmt);
-
-        if($row = mysqli_fetch_assoc($resultQuery))
-        {
-            $password_check = password_verify($password,$row['password']);
-
-            if($password_check == false)
-            {
-                header("Location: login.php?msg=wrongPassword");
-                exit();
-            }
-            else if($password_check == true)
-            {
-                $_SESSION['name'] = $row['name'];
-
-                header("Location: index.php?msg=loginSuccess");
-                exit();
-            }
-        }
-    }
 }
-
-
-
-
-
-
 
 
 
@@ -419,6 +387,11 @@ if(isset($_GET['pending_id']))
     }
 }
 
+
+
+
+
+
 if(isset($_POST['Loan']))
 {
     $id         = $_POST['id'];
@@ -439,6 +412,8 @@ if(isset($_POST['Loan']))
 
 }
 
+//////// TRANSACTION SCRIPTS   /////////////////////////////////////////////////////
+
 
 if(isset($_POST['addTransaction']))
 {
@@ -453,6 +428,24 @@ if(isset($_POST['addTransaction']))
     header("Location: wallet.php?msg=paymentAddedSuccess");
     exit();
 
+}
+
+
+///////////// PAYMENT SCRIPTS //////////////////////////////////////
+
+if(isset($_POST['addPayment']))
+{
+    $member_id = $_POST['member_id'];
+    $transaction = $_POST['transaction_id'];
+    $amount = $_POST['amount'];
+    $type = $_POST['type'];
+    $date = date("d-m-Y");
+
+    $insertQuery = "INSERT INTO payment(member_id,transaction_id,amount,type,date) VALUES('$member_id', '$transaction', '$amount ', '$type', '$date')";
+    $resultQuery = mysqli_query($dbconn,$insertQuery);
+
+    header("Location: payment.php?msg=success");
+    exit();
 }
 
 ?>
