@@ -9,12 +9,28 @@
                 <li class="nav-item fa-2x">
                     <a href="login.php" class="nav-link text-muted">WC LOAN</a>
                 </li>
+                <li class="nav-item">
+                    <a href="login.php" class="nav-link text-muted">Home</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="addInfo.php" class="nav-link text-muted">Apply</a>
+                </li>
+                <li class="nav-item">
+                    <a href="loanStatus.php" class="nav-link text-muted">Status</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.php" class="nav-link text-muted">FAQ</a>
+                </li>
             </ul>
         </nav>
 
 
         <div class="container" style="padding-top:5rem;padding-bottom:5rem">
             <div class="row">
+<!--
                 <div class="col-md-3 mx-auto">
                     <div class="card">
                         <div class="card-body">
@@ -24,6 +40,7 @@
                         </div>
                     </div>
                 </div>
+-->
 
                 <div class="col-md-6 mx-auto">
                     <div class="card">

@@ -6,6 +6,12 @@
 
 <?php include 'includes/sidebar.inc.php'; ?>
 
+<style>
+    h4
+    {
+        font-style: italic;
+    }
+</style>
 
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
@@ -56,38 +62,68 @@
 
         </nav>
 
+
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mx-auto">
-                    <h3 class="text-center text-muted">Change Password</h3>
-                    <hr>
-                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-                        <label>Name:</label>
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
+                <div class="col mx-auto">
+                    <div class="jumbotron">
+                        <h3 class="text-center text-muted">MEMBER LOAN INFORMATION</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>Personal Info</h4>
+                                <hr>
+                                Member ID :&nbsp;<strong><?php echo $id; ?></strong>
+                                <br>
+                                <br>
+                                Full Name :&nbsp;<strong><?php echo $name; ?></strong>
+                                <br>
+                                <br>
+                                Phone Number :&nbsp;<strong>(+255)-<?php echo $phone; ?></strong>
+                                <br>
+                                <br>
+                                Region :&nbsp;<strong><?php echo $region; ?></strong>
+                                <br>
+                                <br>
+                                City :&nbsp;<strong><?php echo $city; ?></strong>
+                                <br>
+                                <br>
+                                <h4>Business Info</h4>
+                                <hr>
+                                Business Name :&nbsp;<strong><?php echo $business_name; ?></strong>
+                                <br>
+                                <br>
+                                Dependant No :&nbsp;<strong><?php echo $dependant; ?></strong>
+                                <br>
+                                <br>
+                                Loan Amount :&nbsp;<strong><a href="payment.php">Tzs&nbsp;<?php echo number_format($loan_amount); ?>/=</a></strong>
+                                <br>
+                                <br>
+                                Loan Description :&nbsp;<strong><?php echo $description; ?></strong>
+                                <br>
+                                <br>
+                                <h4>Guarantor Info</h4>
+                                <hr>
+                                Guarantor Name :&nbsp;<strong><?php echo $gname; ?></strong>
+                                <br>
+                                <br>
+                                Guaranotr Relation :&nbsp;<strong><?php echo $grelation; ?></strong>
+                                <br>
+                                <br>
+                                Guarantor Phone :&nbsp;<strong>(+255)-<?php echo $gphone; ?></strong>
+                                <br>
+                                <br>
+                                Guarantor Address :&nbsp;<strong><?php echo $gaddress; ?></strong>
+                                <br>
+                                <br>
+                                <h4>Supervisor Info</h4>
+                                <hr>
+                                Supervisor Name     :&nbsp;<strong><?php echo $approve_name; ?></strong>
+                                <br>
+                                <br>
+                                Supervisor Contact  :&nbsp;<strong>(+255)-<?php echo $approve_phone; ?></strong>
+                            </div>
                         </div>
-                        <label>Email:</label>
-                        <div class="form-group">
-                            <input type="email" name="name" class="form-control" value="<?php echo $email; ?>">
-                        </div>
-                        <label>Current Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="currentPassword" class="form-control" placeholder="Enter Current Password">
-                        </div>
-                        <label>New Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="newPassword" class="form-control" placeholder="Enter New Password">
-                        </div>
-                        <span class="badge badge-pill badge-warning">* Must contain at least one number, one letter, any of these characters -<br> "!@#$%" and more than 8 characters long.</span>
-                        <h1></h1>
-                        <label>Retype New Password:</label>
-                        <div class="form-group">
-                            <input type="password" name="repeatPassword" class="form-control" placeholder="Repeat Password">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="changePassword" class="form-control btn btn-outline-info" value="Change password">
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +138,7 @@
     </footer>
 </div>
 
-<?php include 'includes/footer.inc.php' ?>
+<?php include 'includes/footer.inc.php'; ?>
 
 
 <?php } ?>

@@ -12,9 +12,15 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item fa-1x">
-                    <a href="login.php" class="nav-link text-muted"><?php echo $date = date('d-m-y-l'); ?></a>
+           <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="addInfo.php" class="nav-link text-muted">Apply</a>
+                </li>
+                <li class="nav-item">
+                    <a href="loanStatus.php" class="nav-link text-muted">Status</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.php" class="nav-link text-muted">FAQ</a>
                 </li>
             </ul>
         </nav>

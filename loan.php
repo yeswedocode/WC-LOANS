@@ -101,7 +101,7 @@
                                 <td><?php echo number_format($amount); ?>/=</td>
                                 <td><?php echo $date; ?></td>
                                 <td>
-                                    <a href="#" class="text-info">Check</a>
+                                    <a href="checkMemberLoan.php?check_id=<?php echo $id; ?>" class="text-info">Check</a>
                                     ||
                                     <a href="#" class="text-danger">Delete</a>
                                 </td>

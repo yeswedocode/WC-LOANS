@@ -1,4 +1,4 @@
-  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <div class="sidebar-brand-text mx-3">WC <sup>LOAN</sup></div>
       </a>
@@ -79,8 +79,24 @@
       <div class="sidebar-heading">
           SETTINGS
       </div>
+
+      <?php
+        if(isset($_GET['id']))
+        {
+            $dbconn = mysqli_connect("localhost","root","","wc");
+            $id = $_GET['id'];
+            $sql = "SELECT * FROM users WHERE id='$id'";
+            $res = mysqli_query($dbconn,$sql);
+
+        while($row = mysqli_fetch_array($res))
+        {
+        $id = strtoupper($row['id']);
+        }
+        }
+
+      ?>
       <li class="nav-item">
-          <a class="nav-link" href="editUser.php">
+          <a class="nav-link" href="editUser.php?id=<?php echo $id; ?>">
               <i class="fas fa-fw fa-chart-area"></i>
               <span>Change Password</span></a>
       </li>

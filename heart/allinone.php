@@ -446,7 +446,31 @@ if(isset($_POST['addPayment']))
 }
 
 
-//////////////////////////////// FILE UPLOAD ////////////////////////////////////////////
+if(isset($_GET['check_id']))
+{
+    $id = $_GET['check_id'];
+    $selectQuery = "SELECT * FROM personal_info_tbl WHERE id='$id' AND status='active'";
+    $resultQuery = mysqli_query($dbconn,$selectQuery);
+
+    while($row=mysqli_fetch_array($resultQuery))
+    {
+        $id                 = strtoupper($row['id']);
+        $name               = strtoupper($row['name']);
+        $phone              = strtoupper($row['phone']);
+        $region             = strtoupper($row['region']);
+        $city               = strtoupper($row['city']);
+        $business_name      = strtoupper($row['business_name']);
+        $dependant          = strtoupper($row['dependant']);
+        $loan_amount        = strtoupper($row['loan_amount']);
+        $description        = strtoupper($row['description']);
+        $gname              = strtoupper($row['gname']);
+        $grelation          = strtoupper($row['grelation']);
+        $gphone             = strtoupper($row['gphone']);
+        $gaddress           = strtoupper($row['gaddress']);
+        $approve_name       = strtoupper($row['approve_name']);
+        $approve_phone      = strtoupper($row['approve_phone']);
+    }
+}
 
 
 
