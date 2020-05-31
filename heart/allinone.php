@@ -74,10 +74,10 @@ if(isset($_POST['addUser']))
 
 //READ USER DATA
 
-if(isset($_GET['id']))
+if(isset($_SESSION['id']))
 {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM users WHERE id='$id'";
+    $id = $_SESSION['id'];
+    $sql = "SELECT * FROM users WHERE id='".$_SESSION['id']."'";
     $res = mysqli_query($dbconn,$sql);
 
     while($row = mysqli_fetch_array($res))
@@ -363,27 +363,27 @@ if(isset($_POST['changePassword']))
 //////////////////////// END CHANGE PASSWORD SCRIPTS   /////////////////////////////////////////////////////////
 
 
-if(isset($_GET['pending_id']))
+if(isset($_GET['pending']))
 {
-    $id = $_GET['pending_id'];
+    $id = $_GET['pending'];
     $selectQuery = "SELECT * FROM personal_info_tbl WHERE id='$id'";
     $resultQuery = mysqli_query($dbconn,$selectQuery);
 
     while($row=mysqli_fetch_array($resultQuery))
     {
-        $id                 = strtoupper($row['id']);
-        $name               = strtoupper($row['name']);
-        $phone              = strtoupper($row['phone']);
-        $region             = strtoupper($row['region']);
-        $city               = strtoupper($row['city']);
-        $business_name      = strtoupper($row['business_name']);
-        $dependant          = strtoupper($row['dependant']);
-        $loan_amount        = strtoupper($row['loan_amount']);
-        $description        = strtoupper($row['description']);
-        $gname              = strtoupper($row['gname']);
-        $grelation          = strtoupper($row['grelation']);
-        $gphone             = strtoupper($row['gphone']);
-        $gaddress           = strtoupper($row['gaddress']);
+        $id                 = $row['id'];
+        $name               = $row['name'];
+        $phone              = $row['phone'];
+        $region             = $row['region'];
+        $city               = $row['city'];
+        $business_name      = $row['business_name'];
+        $dependant          = $row['dependant'];
+        $loan_amount        = $row['loan_amount'];
+        $description        = $row['description'];
+        $gname              = $row['gname'];
+        $grelation          = $row['grelation'];
+        $gphone             = $row['gphone'];
+        $gaddress           = $row['gaddress'];
     }
 }
 
@@ -404,7 +404,7 @@ if(isset($_POST['Loan']))
     $updateQuery = "UPDATE personal_info_tbl SET status='$status',approve_name='$approve_name', approve_phone='$approve_phone', date='$date' WHERE id='$id'";
     $resultQuery = mysqli_query($dbconn,$updateQuery);
 
-    header("Location: upload.php?msf=uploadFile");
+    header("Location: upload.php?msg=uploadFile");
     exit();
 
 }

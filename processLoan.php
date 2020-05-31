@@ -80,7 +80,7 @@
                         <div class="col-md-4">
                             <label>Phone Number:</label>
                             <div class="form-group">
-                                <input type="text" name="phone" class="form-control" value="<?php echo $phone; ?>" disabled>
+                                <input type="text" name="phone" class="form-control" value="<?php echo $phone; ?>">
                             </div>
                         </div>
                     </div>

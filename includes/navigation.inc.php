@@ -1,4 +1,5 @@
 <?php
+
 $dbconn = mysqli_connect("localhost","root","","wc");
 $selectQuery = "SELECT * FROM wallet";
 $resultQuery = mysqli_query($dbconn,$selectQuery);
@@ -81,7 +82,6 @@ while($row=mysqli_fetch_array($resultQuery))
     }
 
 }
-
 ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
@@ -153,8 +153,10 @@ while($row=mysqli_fetch_array($resultQuery))
 
                                 echo
                                     '
-
-                                    <strong>Warning!</strong> You have Loan request from <a href="processLoan.php?pending_id='.$id.'" style="color:#000;font-weight:bold;text-decoration:underline">'.$id.'</a>
+                                    <div class="alert alert-info alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Loan Request!</strong> Request from <a href="processLoan.php?pending='.$id.'" style="color:#000;font-weight:bold;text-decoration:underline">'.$id.'</a>
+                                    </div>
                                     <br>
                                     <br>
                                     ';

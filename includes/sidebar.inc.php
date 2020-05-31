@@ -80,23 +80,8 @@
           SETTINGS
       </div>
 
-      <?php
-        if(isset($_GET['id']))
-        {
-            $dbconn = mysqli_connect("localhost","root","","wc");
-            $id = $_GET['id'];
-            $sql = "SELECT * FROM users WHERE id='$id'";
-            $res = mysqli_query($dbconn,$sql);
-
-        while($row = mysqli_fetch_array($res))
-        {
-        $id = strtoupper($row['id']);
-        }
-        }
-
-      ?>
       <li class="nav-item">
-          <a class="nav-link" href="editUser.php?id=<?php echo $id; ?>">
+          <a class="nav-link" href="editUser.php">
               <i class="fas fa-fw fa-chart-area"></i>
               <span>Change Password</span></a>
       </li>
