@@ -26,6 +26,18 @@ while($row=mysqli_fetch_array($resultQuery))
 
 }
 
+$dbconn = mysqli_connect("localhost","root","","wc");
+$selectQuery = "SELECT * FROM personal_info_tbl WHERE status='active'";
+$resultQuery = mysqli_query($dbconn,$selectQuery);
+$totalP = null;
+
+while($row=mysqli_fetch_array($resultQuery))
+{
+    $name = $row['name'];
+    $amount = $row['loan_amount'];
+    $totalP += $amount;
+
+}
 
 $dbconn = mysqli_connect("localhost","root","","wc");
 $selectQuery = "SELECT * FROM personal_info_tbl WHERE status='active'";
@@ -43,20 +55,32 @@ while($row=mysqli_fetch_array($resultQuery))
 }
 
 
-$dbconn = mysqli_connect("localhost","root","","wc");
-$selectQuery = "SELECT * FROM personal_info_tbl WHERE status='active'";
+$date = date('d-M-y');
+
+$selectQuery = "SELECT * FROM return_tbl";
 $resultQuery = mysqli_query($dbconn,$selectQuery);
-$totalP = null;
+$totalBalance = null;
 
 while($row=mysqli_fetch_array($resultQuery))
 {
-    $name = $row['name'];
-    $amount = $row['loan_amount'];
-    $totalP += $amount;
+   $member = $row['member_id'];
+   $balance = $row['balance'];
+   $paydate = $row['paydate'];
+
+   $checkdate = strtotime($paydate);
+   $payDates  = strtotime($date);
+
+    if($payDates > $checkdate)
+    {
+        $totalBalance += $row['balance'];
+    }
+
+    else
+    {
+        $totalBalance = 0;
+    }
 
 }
-
-
 
 ?>
 
@@ -109,10 +133,41 @@ while($row=mysqli_fetch_array($resultQuery))
 
         </nav>
 
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <?php
+                        $sql = "SELECT * FROM request_tbl";
+                        $resultQuery = mysqli_query($dbconn,$sql);
+                        $numRows = mysqli_num_rows($resultQuery);
+
+                        if($numRows > 0)
+                        {
+                            while($row=mysqli_fetch_array($resultQuery))
+                            {
+
+                                $id = $row['id'];
+                                $amount = $row['amount'];
+                                $date = $row['date'];
+
+                                echo
+                                    '
+
+                                    <strong>Warning!</strong> You have Loan request from <a href="processLoan.php?pending_id='.$id.'" style="color:#000;font-weight:bold;text-decoration:underline">'.$id.'</a>
+                                    <br>
+                                    <br>
+                                    ';
+                            }
+                        }
+
+                    ?>
+                </div>
+            </div>
+        </div>
+
         <div class="container-fluid">
             <div class="row">
-
-
                 <!-- MY WALLET CARD-->
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
@@ -122,7 +177,7 @@ while($row=mysqli_fetch_array($resultQuery))
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">My Wallet</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">Tzs&nbsp;<?php echo number_format($totalAmount); ?>/=</div>
                                 </div>
-<!--
+                                <!--
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                 </div>
@@ -157,7 +212,7 @@ while($row=mysqli_fetch_array($resultQuery))
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a href="missedPayment.php" class="text-danger">Missed Payment</a></div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Tzs&nbsp;<?php echo number_format($totalBalance);?>/=</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -191,27 +246,11 @@ while($row=mysqli_fetch_array($resultQuery))
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a href="pending.php" class="text-warning">Pending Requests</a></div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a href="wallet.php" class="text-warning">Transaction</a></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo number_format($total); ?></div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-secondary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"><a href="pending.php" class="text-warning">Processing Requests</a></div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>

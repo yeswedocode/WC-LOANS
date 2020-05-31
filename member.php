@@ -126,7 +126,9 @@
                                 <td><?php echo $memberPhone; ?></td>
                                 <td><?php echo $memberAddress; ?></td>
                                 <td>
-                                    <a href="editMember.php?member_id=<?php echo $memberId; ?>"><span class="badge badge-pill badge-info">Edit</span></a>
+                                    <a href="paymentDetails.php?pay_id=<?php echo $memberId; ?>"><span class="badge badge-pill badge-info">Payment</span></a>
+                                    |
+                                    <a href="editMember.php?member_id=<?php echo $memberId; ?>"><span class="badge badge-pill badge-warning">Edit</span></a>
                                     |
                                     <a href="heart/allinone.php?delete_member=<?php echo $memberId; ?>"><span class="badge badge-pill badge-danger">Delete</span></a>
                                 </td>

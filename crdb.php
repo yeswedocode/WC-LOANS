@@ -114,8 +114,8 @@
                     <br>
                     <div class="d-flex flex-row-reverse bg-info text-light p-3 rounded-bottom">
                         <div class="py-1 px-5 text-right">
-                            <div class="mb-2 fa-2x">Total Amount<sup>crdb</sup></div>
-                            <div class="h3 text-light">Tzs <?php echo number_format($total); ?>/=</div>
+                            <div class="mb-2 fa-2x">Total Amount<sup>crdb</sup><hr></div>
+                            <div class="h3 text-light">Tzs <?php echo number_format($total); ?>/=<hr><hr></div>
                         </div>
                     </div>
                 </div>

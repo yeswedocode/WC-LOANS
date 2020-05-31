@@ -65,12 +65,49 @@
                         <table class="table table-striped" id="dataTable">
                             <thead class="thead-dark">
                                 <th>ID</th>
-                                <th>Name</th>
                                 <th>Balance</th>
                                 <th>Payment Date</th>
-                                <th>Action</th>
+<!--                                <th>Action</th>-->
                             </thead>
+                            <tbody>
+                                <?php
+
+                                   $date = date('d-M-y');
+
+                                   $selectQuery = "SELECT * FROM return_tbl";
+                                   $resultQuery = mysqli_query($dbconn,$selectQuery);
+                                   $total = null;
+
+                                   while($row=mysqli_fetch_array($resultQuery))
+                                   {
+                                       $member = $row['member_id'];
+                                       $balance = $row['balance'];
+                                       $paydate = $row['paydate'];
+                                       $total += $row['balance'];
+
+                                       $checkdate = strtotime($paydate);
+                                       $payDates  = strtotime($date);
+
+                                       if($payDates > $checkdate) {
+
+
+                                   ?>
+
+                                <tr>
+                                    <td><?php echo $member; ?></td>
+                                    <td>Tzs&nbsp;<?php echo $balance; ?>/=</td>
+                                    <td><?php echo $paydate; ?></td>
+                                </tr>
+                                <?php }} ?>
+                            </tbody>
                         </table>
+                        <br>
+                        <div class="d-flex flex-row-reverse bg-info text-light p-3 rounded-bottom">
+                            <div class="py-1 px-5 text-right">
+                                <div class="mb-2 fa-2x">Total Payment<hr></div>
+                                <div class="h3 text-light">Tzs <?php echo number_format($total); ?>/=<hr><hr></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

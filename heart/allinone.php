@@ -404,10 +404,7 @@ if(isset($_POST['Loan']))
     $updateQuery = "UPDATE personal_info_tbl SET status='$status',approve_name='$approve_name', approve_phone='$approve_phone', date='$date' WHERE id='$id'";
     $resultQuery = mysqli_query($dbconn,$updateQuery);
 
-    $deleteQuery = "DELETE FROM request_tbl WHERE id='$id'";
-    $resultQuery = mysqli_query($dbconn,$sql);
-
-    header("Location: index.php?msg=newLoan");
+    header("Location: upload.php?msf=uploadFile");
     exit();
 
 }
@@ -447,5 +444,11 @@ if(isset($_POST['addPayment']))
     header("Location: payment.php?msg=success");
     exit();
 }
+
+
+//////////////////////////////// FILE UPLOAD ////////////////////////////////////////////
+
+
+
 
 ?>

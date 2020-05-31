@@ -57,6 +57,20 @@
         <div class="container">
             <div class="row">
                 <div class="col mx-auto">
+                    <?php
+                    if(@$_GET['msg'] == 'approvedMember')
+                    {
+
+                        echo
+                            '
+                            <div class="alert alert-success alert-dismissible fade show text-success text-center my-3">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Loan Approved!</strong> Congraluations Member Loan Approved Successfully.
+				            </div>
+                            ';
+                    }
+
+                    ?>
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <th>Member ID</th>
@@ -92,16 +106,16 @@
                                     <a href="#" class="text-danger">Delete</a>
                                 </td>
                             </tr>
-                    <?php
+                            <?php
                             }
                         ?>
-                               </tbody>
+                        </tbody>
                     </table>
                     <br>
                     <div class="d-flex flex-row-reverse bg-info text-light p-3 rounded-bottom">
                         <div class="py-1 px-5 text-right">
-                            <div class="mb-2">Total Amount Refunded Loan</div>
-                            <div class="h2 text-light">Tzs <?php echo number_format($total); ?>/=</div>
+                            <div class="mb-2">Total Amount Refunded Loan<hr></div>
+                            <div class="h2 text-light">Tzs <?php echo number_format($total); ?>/=<hr><hr></div>
                         </div>
                     </div>
                 </div>
